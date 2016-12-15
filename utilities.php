@@ -39,12 +39,14 @@ abstract class utilities
     }
     static function searchBooks($text=0,$search=0){
         $ids=array();
-        if($text==0)self::loadBooks(50);
+        if($text===0){
+            self::loadBooks(50);
+         }
         else {
             foreach (self::$BOOKS as $item){
-                if($search=="title" && strpos(strtolower($item->getTitle()),strtolower($text))!==false) $ids[]=$item->getId();
-                if($search=="author" && strpos(strtolower($item->getAuthor()),strtolower($text))!==false) $ids[]=$item->getId();
-                if($search=="subject" && strpos(strtolower($item->getSubject()),strtolower($text))!==false) $ids[]=$item->getId();
+                if(($search=="title" || $search=="all") && (strpos(strtolower($item->getTitle()),strtolower($text))!==false)) $ids[]=$item->getId();
+                if(($search=="author" || $search=="all") && (strpos(strtolower($item->getAuthor()),strtolower($text))!==false)) $ids[]=$item->getId();
+                if(($search=="subject" || $search=="all") && (strpos(strtolower($item->getSubject()),strtolower($text))!==false)) $ids[]=$item->getId();
             }
             self::loadBooks(0,$ids);
         }
