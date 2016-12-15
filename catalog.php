@@ -66,7 +66,11 @@ $thisPage = "catalog";
     <div class="divider black"></div>
     <div class="row col s10 offset-s1">
         <h4>Results: </h4>
-        <?php utilities::?>
+        <?php
+        if(isset($_GET['search'])) {
+            utilities::searchBooks($_GET['search'], $_GET['options']);
+        }else utilities::searchBooks();
+        ?>
     </div>
 </div>
 </body>

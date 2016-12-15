@@ -37,6 +37,18 @@ abstract class utilities
         }
 
     }
+    static function searchBooks($text=0,$search=0){
+        $ids=array();
+        if($text==0)self::loadBooks(50);
+        else {
+            foreach (self::$BOOKS as $item){
+                if($search=="title" && strpos(strtolower($item->getTitle()),strtolower($text))!==false) $ids[]=$item->getId();
+                if($search=="author" && strpos(strtolower($item->getAuthor()),strtolower($text))!==false) $ids[]=$item->getId();
+                if($search=="subject" && strpos(strtolower($item->getSubject()),strtolower($text))!==false) $ids[]=$item->getId();
+            }
+            self::loadBooks(0,$ids);
+        }
+    }
     static function init(){
         self::$BOOKS=array(new element(1,"Foundation","book","Isaac Asimov","Sci-Fi Novel, one of the clasics on scifi",1951,"0-553-29335-4",1,1,1),
             new element(2,"Foundation and Empire","book","Isaac Asimov","Sci-Fi Novel, one of the clasics on scifi",1952,"978-0553293371",1,1,1),
@@ -52,6 +64,7 @@ abstract class utilities
         if($max>0) {
 
             for ($i = 0; $i < $max; $i++) {
+                if(!isset(self::$BOOKS[$i])) break;
                 echo ' <div class="col s4">
                 <h5 class="header">' . self::$BOOKS[$i]->getTitle() . '</h5>
                 <div class="card horizontal hoverable">
@@ -70,7 +83,33 @@ abstract class utilities
             </div>';
             }
         }
+        if($max==0 && $ids!==0){
+            foreach ($ids as $id){
+                $book=self::findById($id);
+                echo ' <div class="col s4">
+                <h5 class="header">' . $book->getTitle() . '</h5>
+                <div class="card horizontal hoverable">
+                    <div class="card-image">
+                        <img src="http://lorempixel.com/100/190/nature/6">
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <p>' . $book->getSubject() . '</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="#">This is a link</a>
+                        </div>
+                    </div>
+                </div>
+            </div>';
+            }
+        }
 
+    }
+    static function findById($id){
+        foreach (self::$BOOKS as $book){
+            if($book->getId()==$id) return $book;
+        }
     }
 }
 utilities::init();
