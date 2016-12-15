@@ -13,11 +13,12 @@ $thisPage = "index";
 ?>
 <? include_once "header.php"; ?>
 <div class="row">
-    <form class="col s4" method="POST" action="catalogue.php">
+    <form class="col s4" method="get" action="catalog.php">
         <div class="input-field">
-            <input id="search" type="search" required>
+            <input id="search" type="search" required name="search">
             <label for="search"><i class="material-icons">search</i> Search on the catalogue</label>
             <i class="material-icons">close</i>
+            <input type="hidden" name="options" value="all">
         </div>
     </form>
 
