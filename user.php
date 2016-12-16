@@ -16,6 +16,7 @@ class user
     private $IDcard;
     private $telephone;
     private $email;
+    private $photo;
 
     /**
      * @return mixed
@@ -179,7 +180,7 @@ class user
     private $adress;
     private $type;
 
-    public function __construct($id,$user,$password,$name,$surname,$IDcard,$telephone,$email,$adress,$type)
+    public function __construct($id,$user,$password,$name,$surname,$IDcard,$telephone,$email,$adress,$type,$photo=0)
     {
         $this->id=$id;
         $this->user=$user;
@@ -191,6 +192,8 @@ class user
         $this->email=$email;
         $this->adress=$adress;
         $this->type=$type;
+        if($photo==0) $this->photo="img/noprofile.jpg";
+        else $this->photo=$photo;
     }
 
 

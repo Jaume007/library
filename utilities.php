@@ -21,6 +21,7 @@ abstract class utilities
               session_start();
                 $_SESSION["user"]=$item->getUser();
                 $_SESSION["type"]=$item->getType();
+                $_SESSION["id"]=$item->getId();
                 echo '<script>window.location.replace("'.$page.'.php");</script>';
 
             }
@@ -118,6 +119,11 @@ abstract class utilities
     static function findById($id){
         foreach (self::$BOOKS as $book){
             if($book->getId()==$id) return $book;
+        }
+    }
+    static function findUser($id){
+        foreach (self::$USERS as $user){
+            if ($user->getId()==$id) return $user;
         }
     }
 }
