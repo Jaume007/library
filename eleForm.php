@@ -1,4 +1,4 @@
-<form method="post" action="#">
+<form method="post" action="#" id="element">
     <div class="row">
         <p>Title:</p>
         <div class="input-field">
@@ -21,30 +21,21 @@
         </div>
     </div>
     <div class="row">
-        <p>Surname:</p>
+        <p>Subject:</p>
         <div class="input-field">
-            <input type="text"  name="surname" id="surname">
-            <label for="surname">Surname: </label>
+            <input type="text"  name="subject" id="subject">
+            <label for="subject">Subject: </label>
         </div>
     </div>
     <div class="row">
-        <p>Adress:</p>
-        <div class="input-field">
-            <input type="text"  name="adress" id="adress">
-            <label for="adress">Adress: </label>
-        </div>
+        <p>Summary:</p>
+        <textarea form="element" rows="5"></textarea>
     </div>
-    <div class="row">
-        <p>IDcard:</p>
-        <div class="input-field">
-            <input type="text"  name="id" id="id">
-            <label for="id">ID Card: </label>
-        </div>
-    </div>
+
 
     <div class="center">
         <button class="btn waves-effect grey darken-3" type="submit" name="action">
-            Register
+            Add Element
         </button>
     </div>
 </form>
