@@ -52,11 +52,11 @@ abstract class utilities
         }
     }
     static function init(){
-        self::$BOOKS=array(new element(1,"Foundation","book","Isaac Asimov","Sci-Fi Novel, one of the clasics on scifi",1951,"0-553-29335-4",1,1,1),
-            new element(2,"Foundation and Empire","book","Isaac Asimov","Sci-Fi Novel, one of the clasics on scifi",1952,"978-0553293371",1,1,1),
-            new element(3,"Second Foundation","book","Isaac Asimov","Sci-Fi Novel, one of the clasics on scifi",1953,"0000000000",1,1,1),
-            new element(4,"Foundation's Edge","book","Isaac Asimov","Sci-Fi Novel, one of the clasics on scifi",1982,"0-385-17725-9",1,1,1),
-            new element(5,"Foundation and Earth","book","Isaac Asimov","Sci-Fi Novel, one of the clasics on scifi",1986,"0-385-23312-4",1,1,1)
+        self::$BOOKS=array(new element(1,"Foundation","book","Isaac Asimov","Sci-Fi Novel, one of the clasics on scifi",1951,"0-553-29335-4",1,1,1,"img/foundation.jpg"),
+            new element(2,"Foundation and Empire","book","Isaac Asimov","Sci-Fi Novel, one of the clasics on scifi",1952,"978-0553293371",1,1,1,"img/empire.jpg"),
+            new element(3,"Second Foundation","book","Isaac Asimov","Sci-Fi Novel, one of the clasics on scifi",1953,"0000000000",1,1,1,"img/secondFoundation.jpg"),
+            new element(4,"Foundation's Edge","book","Isaac Asimov","Sci-Fi Novel, one of the clasics on scifi",1982,"0-385-17725-9",1,1,1,"img/edge.jpg"),
+            new element(5,"Foundation and Earth","book","Isaac Asimov","Sci-Fi Novel, one of the clasics on scifi",1986,"0-385-23312-4",1,1,1,"img/earth.jpg")
         );
         self::$USERS=array(new user(1,"user","1234","fulano","mengano","6666666F","696965485","mengano@gmail.com","under a bridge",1),
             new user(2,"admin","1234","fulanito","menganito","567849123f","654258745","fulanito@gmail.com","an ATM",100),
@@ -67,11 +67,11 @@ abstract class utilities
 
             for ($i = 0; $i < $max; $i++) {
                 if(!isset(self::$BOOKS[$i])) break;
-                echo ' <div class="col s4">
+                echo ' <div class="col s3">
                 <h5 class="header">' . self::$BOOKS[$i]->getTitle() . '</h5>
                 <div class="card horizontal hoverable">
                     <div class="card-image">
-                        <img src="http://lorempixel.com/100/190/nature/6">
+                        <img src="'.self::$BOOKS[$i]->getImg().'">
                     </div>
                     <div class="card-stacked">
                         <div class="card-content">
@@ -88,11 +88,11 @@ abstract class utilities
         if($max==0 && $ids!==0){
             foreach ($ids as $id){
                 $book=self::findById($id);
-                echo ' <div class="col s4">
+                echo ' <div class="col s3">
                 <h5 class="header">' . $book->getTitle() . '</h5>
                 <div class="card horizontal hoverable">
                     <div class="card-image">
-                        <img src="http://lorempixel.com/100/190/nature/6">
+                        <img src="'.$book->getImg().'">
                     </div>
                     <div class="card-stacked">
                         <div class="card-content">

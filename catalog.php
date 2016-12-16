@@ -64,7 +64,7 @@ $thisPage = "catalog";
         </form>
     </div>
     <div class="divider black"></div>
-    <div class="row col s10 offset-s1">
+    <div class="row col s12">
         <h4>Results: </h4>
         <?php
         if(isset($_GET['search'])) {

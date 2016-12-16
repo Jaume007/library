@@ -178,7 +178,24 @@ class element
     private $protection;
     private $state;
     private $available;
-    function __construct($id,$title,$type,$author,$subject,$year,$ISBN,$protection,$state,$available)
+    private $img;
+
+    /**
+     * @return mixed
+     */
+    public function getImg()
+    {
+        return $this->img;
+    }
+
+    /**
+     * @param mixed $img
+     */
+    public function setImg($img)
+    {
+        $this->img = $img;
+    }
+    function __construct($id,$title,$type,$author,$subject,$year,$ISBN,$protection,$state,$available,$img)
     {
         $this->id=$id;
         $this->title=$title;
@@ -190,5 +207,6 @@ class element
         $this->protection=$protection;
         $this->state=$state;
         $this->available=$available;
+        $this->img=$img;
     }
 }
