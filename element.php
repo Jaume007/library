@@ -179,6 +179,23 @@ class element
     private $state;
     private $available;
     private $img;
+    private $summary;
+
+    /**
+     * @return mixed
+     */
+    public function getSummary()
+    {
+        return $this->summary;
+    }
+
+    /**
+     * @param mixed $summary
+     */
+    public function setSummary($summary)
+    {
+        $this->summary = $summary;
+    }
 
     /**
      * @return mixed
@@ -195,7 +212,7 @@ class element
     {
         $this->img = $img;
     }
-    function __construct($id,$title,$type,$author,$subject,$year,$ISBN,$protection,$state,$available,$img)
+    function __construct($id,$title,$type,$author,$subject,$summary,$year,$ISBN,$protection,$state,$available,$img)
     {
         $this->id=$id;
         $this->title=$title;
@@ -208,5 +225,6 @@ class element
         $this->state=$state;
         $this->available=$available;
         $this->img=$img;
+        $this->summary=$summary;
     }
 }
