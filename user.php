@@ -16,7 +16,22 @@ class user
     private $IDcard;
     private $telephone;
     private $email;
-    private $photo;
+    private $photo="img/noprofile.jpg";
+    /**
+     * @return mixed
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param mixed $photo
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+    }
 
     /**
      * @return mixed
@@ -180,7 +195,7 @@ class user
     private $adress;
     private $type;
 
-    public function __construct($id,$user,$password,$name,$surname,$IDcard,$telephone,$email,$adress,$type,$photo=0)
+    public function __construct($id,$user,$password,$name,$surname,$IDcard,$telephone,$email,$adress,$type)
     {
         $this->id=$id;
         $this->user=$user;
@@ -192,8 +207,8 @@ class user
         $this->email=$email;
         $this->adress=$adress;
         $this->type=$type;
-        if($photo==0) $this->photo="img/noprofile.jpg";
-        else $this->photo=$photo;
+
+
     }
 
 
