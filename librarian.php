@@ -1,7 +1,38 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jaume
- * Date: 16/12/16
- * Time: 12:55
- */
+session_start(); ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <?php include_once "head.php"; ?>
+</head>
+
+<body>
+<?php
+include_once "utilities.php";
+$thisPage = "librarian";
+?>
+<? include_once "headerExt.php"; ?>
+<div class="row">
+    <?php include_once "login.php"; ?>
+</div>
+<div class="container flow-text">
+
+    <div class="center">
+        <h2>Library Management</h2>
+    </div>
+    <div class="divider black"></div>
+    <div id="register" style="display: block;">
+        <h4>User Registration</h4>
+        <div class="col s6 offset-s3">
+            <?php include_once "regForm.php"?>
+        </div>
+    </div>
+    <div id="addElement" style="display: none;">
+
+    </div>
+    <div id="deleteUser" style="display: none;"></div>
+    <div id="deleteElement" style="display: none;"></div>
+</div>
+<? include_once "footer.php"?>
+</body>
+</html>

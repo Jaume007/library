@@ -31,6 +31,7 @@ abstract class utilities
     }
     static function logout($logout){
         if($logout) {
+            session_start();
             session_unset();
             session_destroy();
             setcookie("PHPSESSID", "", time() - 1000);
