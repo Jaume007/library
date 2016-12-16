@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: jaume
- * Date: 13/12/16
- * Time: 20:22
- */
 
 include_once "element.php";
 include_once "user.php";
@@ -14,6 +8,7 @@ abstract class utilities
 
     static $BOOKS;
     static $USERS;
+    static $CONFIG;
 
     static function login($user,$password,$page){
         foreach (self::$USERS as $item){
@@ -70,6 +65,13 @@ abstract class utilities
         self::$USERS=array(new user(1,"user","1234","fulano","mengano","6666666F","696965485","mengano@gmail.com","under a bridge",1),
             new user(2,"admin","1234","fulanito","menganito","567849123f","654258745","fulanito@gmail.com","an ATM",100),
             new user(3,"librarian","1234","John","Keats","542365785f","654652359","John@gmail.com","not known",50));
+        self::$CONFIG=array(
+            "maxBorrow"=>5,
+            "status"=>array("new","old"),
+            "protection"=>array("Long Booking","Short Booking"),
+            "privileges"=>array("1-49: User","49-99: Librarian","100: Admin"),
+            "penalty"=>1
+        );
     }
     public function loadBooks($max,$ids=0){
         if($max>0) {
