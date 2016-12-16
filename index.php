@@ -27,15 +27,8 @@ $thisPage = "index";
 </div>
 <div class="container">
     <div id="intro" style="padding-bottom: 20px">
-        <h1 class="center-align">No se quin nom Library</h1>
-        <h5 class="center-align">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt
-            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-            dolore eu
-            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-            mollit
-            anim id est laborum."</h5>
+        <h1 class="center-align">The Sci-Fi Repository</h1>
+        <h5 class="center-align">Welcome to the biggest online repository of Science Fiction books, movies and comics. You can book anything online and pick it up at our Library</h5>
     </div>
     <div class="divider black"></div>
     <div id="novedades">
