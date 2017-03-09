@@ -3,13 +3,12 @@
         <div class="row">
             <div class="col l6 s12">
                 <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
-                    content.</p>
+                <p class="grey-text text-lighten-4"></p>
             </div>
             <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Navigation</h5>
                 <ul>
-                    <li><a class="grey-text text-lighten-3" href="index.php">Home</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../index.php">Home</a></li>
                     <li><a class="grey-text text-lighten-3" href="catalog.php">Catalog</a></li>
 
                 </ul>
@@ -24,6 +23,6 @@
 </footer>
 <!--Import jQuery before materialize.js-->
 
-<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
-<script type="text/javascript" src="js1.js"></script>
+<script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../js/materialize.min.js"></script>
+<script type="text/javascript" src="../js1.js"></script>
