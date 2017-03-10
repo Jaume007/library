@@ -1,12 +1,10 @@
 <?php
 include_once "controllers/indexController.php";
-include_once "controllers/searchController.php";
-include_once "controllers/errorController.php";
-include_once "controllers/beachController.php";
+
 
   //This is the only web page that receives requests.
-$_GET=sanitize($_GET);
-$_POST=sanitize($_POST);
+if (!empty($_GET))$_GET=sanitize($_GET);
+if (!empty($_POST))$_POST=sanitize($_POST);
 //testing to remove
 session_start();
 $_SESSION["user"]="test";

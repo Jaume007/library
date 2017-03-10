@@ -23,6 +23,6 @@
 </footer>
 <!--Import jQuery before materialize.js-->
 
-<script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="../js/materialize.min.js"></script>
-<script type="text/javascript" src="../js1.js"></script>
+<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js1.js"></script>
