@@ -1,6 +1,6 @@
 <div id="login" style="display: none">
     <!-- size 2 en index 6 en resto -->
-    <form class="col s6 offset-s<?php echo $size; ?>" method="POST" action="../utilities.php">
+    <form class="col s6" method="POST" action="utilities.php">
         <div class="row col s6 offset s6 right grey lighten-1">
             <div class="input-field">
                 <i class="material-icons prefix">account_circle</i>

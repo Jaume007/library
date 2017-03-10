@@ -13,6 +13,7 @@ $thisPage = "catalog";
 ?>
 <? include_once "header.php"; ?>
 <div class="row">
+    <div class="col s6"></div>
     <?php include_once "login.php"; ?>
 </div>
 <div class="container">

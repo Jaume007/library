@@ -8,7 +8,8 @@
 
 <? include_once "header.php"; ?>
 <div class="row">
-    <form class="col s4" method="get" action="catalog.php">
+    <div class="col s6">
+    <form class="" method="get" action="catalog.php">
         <div class="input-field">
             <input id="search" type="search" required name="search">
             <label for="search"><i class="material-icons">search</i> Search on the catalogue</label>
@@ -16,7 +17,7 @@
             <input type="hidden" name="options" value="all">
         </div>
     </form>
-
+    </div>
     <?php include_once "login.php"; ?>
 
 </div>

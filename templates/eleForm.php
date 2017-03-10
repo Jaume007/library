@@ -1,36 +1,39 @@
-<form method="post" action="#" id="element">
+<form method="post" action="index.php?controller=librarian&action=newB" id="element">
     <div class="row">
-        <p>Title:</p>
+        <p>ISBN:</p>
         <div class="input-field">
-            <input type="text"  name="title" id="title">
-            <label for="title">Title: </label>
+            <input type="text" name="isbn" id="title">
+            <label for="isbn">ISBN: </label>
         </div>
     </div>
     <div class="row">
-        <p>Author:</p>
+        <p>Conservation:</p>
         <div class="input-field">
-            <input type="text"  name="author" id="author">
-            <label for="author">Author: </label>
+            <select name="conservation" class="browser-default col s6">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="0">New</option>
+                <option value="1">Old</option>
+            </select>
         </div>
     </div>
     <div class="row">
-        <p>Year:</p>
+        <p>Protection:</p>
         <div class="input-field">
-            <input type="text"  name="year" id="year">
-            <label for="year">Year: </label>
+            <select name="protection" class="browser-default col s6">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="0">Short Booking</option>
+                <option value="1">Long Booking</option>
+            </select>
         </div>
     </div>
     <div class="row">
-        <p>Subject:</p>
+        <p>Catalog</p>
         <div class="input-field">
-            <input type="text"  name="subject" id="subject">
-            <label for="subject">Subject: </label>
+            <input type="checkbox" id="status" />
+            <label for="status">Add to catalog</label>
         </div>
     </div>
-    <div class="row">
-        <p>Summary:</p>
-        <textarea form="element" rows="5"></textarea>
-    </div>
+
 
 
     <div class="center">
