@@ -8,12 +8,12 @@ include_once "views/view.php";
  * Date: 10/03/17
  * Time: 10:02
  */
-class mainView extends view
+class librarianView extends view
 {
 
     function __construct()
     {
-        $this->setTemplate("templates/index1.php");
+        $this->setTemplate("templates/librarian.php");
     }
     public function generate($data){
         extract($data);

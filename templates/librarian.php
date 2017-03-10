@@ -1,5 +1,3 @@
-<?php
-session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +5,7 @@ session_start(); ?>
 </head>
 
 <body>
-<?php
-include_once "utilities.php";
-$thisPage = "librarian";
-?>
+
 <? include_once "headerExt.php"; ?>
 <div class="row">
     <?php include_once "login.php"; ?>
