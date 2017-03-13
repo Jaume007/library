@@ -18,7 +18,7 @@ class librarianController extends mainController
             case "indexAction":
                 $this->indexAction();
                 break;
-            case "newB":
+            case "newBAction":
                 $this->addBook();
                 break;
             default:
@@ -38,6 +38,13 @@ class librarianController extends mainController
 
     function addBook()
     {
+        include_once "models/book.php";
+        $data['isbn']=$_POST['isbn'];
+        $data['conservation']=$_POST['conservation'];
+        $data['protection']=$_POST['protection'];
+        $data['active']=isset($_POST['conservation'])?1:0;
+        $db=new book();
+        $db->addBook($data);
 
     }
 }

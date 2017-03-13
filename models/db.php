@@ -240,10 +240,11 @@ class db
         $values = '(' . implode(', ', $values) . ')';
 
         $sql .= $fields . ' VALUES ' . $values;
+        //echo $sql;
         $query = $this->conn->query($sql);
 
         if ($this->conn->error) {
-
+            echo $this->conn->error;
             return false;
         } else {
             return true;

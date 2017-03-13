@@ -6,10 +6,7 @@
 </head>
 
 <body>
-<?php
-include_once "utilities.php";
-$thisPage = "register";
-?>
+
 <? include_once "header.php"; ?>
 <div class="row">
     <?php include_once "login.php"; ?>

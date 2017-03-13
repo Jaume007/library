@@ -31,13 +31,13 @@
     <div id="deleteUser" style="display: none;">
         <h4>Delete User</h4>
         <div class="col s6 offset-s3">
-            <form method="post" action="#">
+            <form method="post" action="index.php?controller=user&action=del">
                 <div class="input-field">
                     <input type="text"  name="user" id="user">
                     <label for="user">Username: </label>
                 </div>
                 <div class="center">
-                    <button class="btn waves-effect grey darken-3" type="submit" name="action">
+                    <button class="btn waves-effect grey darken-3" type="submit">
                         Delete User
                     </button>
                 </div>

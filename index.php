@@ -1,6 +1,8 @@
 <?php
 include_once "controllers/indexController.php";
+include_once "controllers/userController.php";
 include_once "controllers/librarianController.php";
+include_once "controllers/catalogController.php";
 
 
   //This is the only web page that receives requests.

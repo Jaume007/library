@@ -1,5 +1,3 @@
-<?php
-session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +5,7 @@ session_start(); ?>
 </head>
 
 <body>
-<?php
-include_once "utilities.php";
-$thisPage = "catalog";
-?>
+
 <? include_once "header.php"; ?>
 <div class="row">
     <div class="col s6"></div>
@@ -22,7 +17,7 @@ $thisPage = "catalog";
         <h5 class="center-align">"Find anything in our library using our powerful search engine"</h5>
     </div>
     <div class="row col s10">
-        <form class="col s10 offset-s1" action="catalog.php" method="get">
+        <form class="col s10 offset-s1" action="index.php?controller=catalog&action=search" method="post">
             <div class="input-field col s10 offset-s1">
                 <input id="search" type="search" required name="search">
                 <label for="search"><i class="material-icons">search</i> Search on the catalogue</label>
@@ -52,8 +47,8 @@ $thisPage = "catalog";
                 </div>
                 <div class="col s2">
                     <p>
-                        <input name="options" class="with-gap" type="radio" id="subject" value="subject"/>
-                        <label for="subject">Subject</label>
+                        <input name="options" class="with-gap" type="radio" id="category" value="category"/>
+                        <label for="category">Category</label>
                     </p>
                 </div>
                 <div class="col s3 offset-s1">
@@ -67,10 +62,9 @@ $thisPage = "catalog";
     <div class="divider black"></div>
     <div class="row col s12">
         <h4>Results: </h4>
+
         <?php
-        if(isset($_GET['search'])) {
-            utilities::searchBooks($_GET['search'], $_GET['options']);
-        }else utilities::searchBooks();
+        echo $results;
         ?>
     </div>
 </div>
