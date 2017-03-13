@@ -3,17 +3,17 @@ session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <?php include_once "head.php"; ?>
+    <?php include_once "templates/head.php"; ?>
 </head>
 
 <body>
 <?php
-include_once "utilities.php";
+include_once "templates/utilities.php";
 $thisPage = "lending";
 ?>
-<? include_once "header.php"; ?>
+<? include_once "templates/header.php"; ?>
 <div class="row">
-    <?php include_once "login.php"; ?>
+    <?php include_once "templates/login.php"; ?>
 </div>
 <div class="container" style="margin-bottom: 200px">
 
@@ -60,7 +60,7 @@ $thisPage = "lending";
         </div>
     </div>
 </div>
-<? include_once "footer.php" ?>
+<? include_once "templates/footer.php" ?>
 <script> $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
         selectYears: 15 // Creates a dropdown of 15 years to control year

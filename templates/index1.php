@@ -40,7 +40,7 @@
         </div>
     </div>
 </div>
-<? include_once "templatesfooter.php" ?>
+<? include_once "templates/templatesfooter.php" ?>
 </body>
 
 </html>
