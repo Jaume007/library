@@ -42,9 +42,9 @@ class librarianController extends mainController
         $data['isbn']=$_POST['isbn'];
         $data['conservation']=$_POST['conservation'];
         $data['protection']=$_POST['protection'];
-        $data['active']=isset($_POST['conservation'])?1:0;
+        $data['active']=isset($_POST['status'])?1:0;
         $db=new book();
-        $db->addBook($data);
+        return $db->addBook($data);
 
     }
 }

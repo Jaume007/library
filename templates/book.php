@@ -3,17 +3,17 @@ session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <?php include_once "head.php"; ?>
+    <?php include_once "templates/head.php"; ?>
 </head>
 
 <body>
 <?php
-include_once "utilities.php";
+include_once "templates/utilities.php";
 $thisPage = "book";
 ?>
-<? include_once "header.php"; ?>
+<? include_once "templates/header.php"; ?>
 <div class="row">
-    <?php include_once "login.php"; ?>
+    <?php include_once "templates/login.php"; ?>
 </div>
 <div class="container">
     <?php $book=utilities::findById($_GET['id']);?>
@@ -43,6 +43,6 @@ $thisPage = "book";
         </div>
     </div>
 </div>
-<? include_once "footer.php" ?>
+<? include_once "templates/footer.php" ?>
 </body>
 </html>

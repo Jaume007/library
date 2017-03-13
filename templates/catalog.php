@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php include_once "head.php"; ?>
+    <?php include_once "templates/head.php"; ?>
 </head>
 
 <body>
 
-<? include_once "header.php"; ?>
+<? include_once "templates/header.php"; ?>
 <div class="row">
     <div class="col s6"></div>
-    <?php include_once "login.php"; ?>
+    <?php include_once "templates/login.php"; ?>
 </div>
 <div class="container">
     <div id="intro" style="padding-bottom: 20px">
@@ -68,6 +68,6 @@
         ?>
     </div>
 </div>
-<? include_once "footer.php" ?>
+<? include_once "templates/footer.php" ?>
 </body>
 </html>

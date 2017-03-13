@@ -1,8 +1,8 @@
-<form method="post" action="index.php?controller=librarian&action=newB" id="element">
+<form id="bookform" onsubmit="return false;">
     <div class="row">
         <p>ISBN:</p>
         <div class="input-field">
-            <input type="text" name="isbn" id="title">
+            <input type="text" name="isbn" id="isbn">
             <label for="isbn">ISBN: </label>
         </div>
     </div>
@@ -29,16 +29,38 @@
     <div class="row">
         <p>Catalog</p>
         <div class="input-field">
-            <input type="checkbox" id="status" />
+            <input type="checkbox" id="status" name="status"/>
             <label for="status">Add to catalog</label>
         </div>
     </div>
 
 
-
     <div class="center">
-        <button class="btn waves-effect grey darken-3" type="submit" name="action">
+        <button class="btn waves-effect grey darken-3" id="submit" type="submit">
             Add Element
         </button>
     </div>
 </form>
+<script>
+    $('#submit').on('click', function () {
+        var data = {
+            isbn: $('input[name=isbn]').val(),
+            conservation: $('select[name=conservation]').val(),
+            protection: $('select[name=protection]').val(),
+            status: $('input[name=status]').val()
+        };
+        console.log(data);
+        $.post({
+            type: "POST",
+            url:"/~jaume/php/libraryMVC/Ajax/addBook.php",
+            data: data,
+            succes: function (data) {
+                console.log(data);
+                Materialize.toast(data, 2000);
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    });
+</script>

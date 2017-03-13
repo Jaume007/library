@@ -3,17 +3,17 @@ session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <?php include_once "head.php"; ?>
+    <?php include_once "templates/head.php"; ?>
 </head>
 
 <body>
 <?php
-include_once "utilities.php";
+include_once "templates/utilities.php";
 $thisPage = "admin";
 ?>
-<? include_once "header.php"; ?>
+<? include_once "templates/header.php"; ?>
 <div class="row">
-    <?php include_once "login.php"; ?>
+    <?php include_once "templates/login.php"; ?>
 </div>
 <div class="container flow-text">
 
@@ -36,6 +36,6 @@ $thisPage = "admin";
         </div>
     </div>
 </div>
-<? include_once "footer.php" ?>
+<? include_once "templates/footer.php" ?>
 </body>
 </html>

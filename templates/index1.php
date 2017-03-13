@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php include_once "head.php"; ?>
+    <?php include_once "templates/head.php"; ?>
 </head>
 
 <body>
 
-<? include_once "header.php"; ?>
+<? include_once "templates/header.php"; ?>
 <div class="row">
     <div class="col s6">
     <form class="" method="get" action="catalog.php">
@@ -18,7 +18,7 @@
         </div>
     </form>
     </div>
-    <?php include_once "login.php"; ?>
+    <?php include_once "templates/login.php"; ?>
 
 </div>
 <div class="container">
@@ -40,7 +40,7 @@
         </div>
     </div>
 </div>
-<? include_once "footer.php" ?>
+<? include_once "templatesfooter.php" ?>
 </body>
 
 </html>
