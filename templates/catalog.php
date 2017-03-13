@@ -6,7 +6,7 @@
 
 <body>
 
-<? include_once "templates/header.php"; ?>
+<?php include_once "templates/header.php"; ?>
 <div class="row">
     <div class="col s6"></div>
     <?php include_once "templates/login.php"; ?>
@@ -68,6 +68,6 @@
         ?>
     </div>
 </div>
-<? include_once "templates/footer.php" ?>
+<?php include_once "templates/footer.php" ?>
 </body>
 </html>

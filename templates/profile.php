@@ -11,7 +11,7 @@ session_start(); ?>
 include_once "templates/utilities.php";
 $thisPage = "profile";
 ?>
-<? include_once "templates/header.php"; ?>
+<?php include_once "templates/header.php"; ?>
 <div class="row">
     <?php include_once "templates/login.php"; ?>
 </div>
@@ -44,6 +44,6 @@ $thisPage = "profile";
         </div>
     </div>
 </div>
-<? include_once "templates/footer.php" ?>
+<?php include_once "templates/footer.php" ?>
 </body>
 </html>

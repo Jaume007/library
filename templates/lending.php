@@ -11,7 +11,7 @@ session_start(); ?>
 include_once "templates/utilities.php";
 $thisPage = "lending";
 ?>
-<? include_once "templates/header.php"; ?>
+<?php include_once "templates/header.php"; ?>
 <div class="row">
     <?php include_once "templates/login.php"; ?>
 </div>
@@ -60,7 +60,7 @@ $thisPage = "lending";
         </div>
     </div>
 </div>
-<? include_once "templates/footer.php" ?>
+<?php include_once "templates/footer.php" ?>
 <script> $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
         selectYears: 15 // Creates a dropdown of 15 years to control year

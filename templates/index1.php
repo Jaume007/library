@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php include_once "templates/head.php"; ?>
+    <?php require_once realpath(__DIR__."/templates/head.php"); ?>
 </head>
 
 <body>
 
-<? include_once "templates/header.php"; ?>
+<?php require_once "templates/header.php"; ?>
 <div class="row">
     <div class="col s6">
     <form class="" method="get" action="catalog.php">
@@ -40,7 +40,7 @@
         </div>
     </div>
 </div>
-<? include_once "templates/templatesfooter.php" ?>
+<?php include_once "templates/footer.php" ?>
 </body>
 
 </html>
