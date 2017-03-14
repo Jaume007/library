@@ -39,4 +39,8 @@ class book extends db
         }
         return $books;
     }
+    public function deleteBook($book){
+        $book=$this->escape($book);
+        return $this->delete('books',$book);
+    }
 }

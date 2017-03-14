@@ -29,28 +29,18 @@
         </div>
     </div>
     <div id="deleteUser" style="display: none;">
-        <h4>Delete User</h4>
-        <div class="col s6 offset-s3">
-            <form method="post" action="index.php?controller=user&action=del">
-                <div class="input-field">
-                    <input type="text"  name="user" id="user">
-                    <label for="user">Username: </label>
-                </div>
-                <div class="center">
-                    <button class="btn waves-effect grey darken-3" type="submit">
-                        Delete User
-                    </button>
-                </div>
-            </form>
-        </div>
+        <h4>User Management</h4>
+       <ul class="collection">
+           <?php echo $users?>
+       </ul>
     </div>
     <div id="deleteElement" style="display: none;">
         <h4>Delete Element</h4>
         <div class="col s6 offset-s3">
-            <form method="post" action="#">
+            <form method="post" action="index.php?controller=">
                 <div class="input-field">
-                    <input type="text"  name="title" id="title">
-                    <label for="title">Title: </label>
+                    <input type="text"  name="isbn" id="isbn">
+                    <label for="isbn">ISBN: </label>
                 </div>
                 <div class="center">
                     <button class="btn waves-effect grey darken-3" type="submit" name="action">

@@ -14,11 +14,15 @@ class user extends db
     }
     public function newUser($data){
         $data=$this->escape($data);
-
         return $this->insert("users",$data);
     }
     public function deleteUser($user){
         $user=$this->escape($user);
         return $this->delete('users',$user);
+    }
+    public function listUsers($type){
+        $sql='select * from users where type<'.$type;
+        $data=$this->get_results($sql);
+        return $data;
     }
 }

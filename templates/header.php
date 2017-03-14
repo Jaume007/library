@@ -1,7 +1,7 @@
 <header>
     <nav>
         <div class="nav-wrapper grey darken-4">
-            <a href="index.php" class="brand-logo"><img class="responsive-img" style="height: 60px" src="img/logo.png"/></a>
+            <a href="index.php" class="brand-logo hide-on-med-and-down"><img class="responsive-img" style="height: 60px" src="img/logo.png"/></a>
             <ul id="nav-mobile " class="right hide-on-med-and-down">
                 <li><a href="index.php?controller=catalog">Catalog</a></li>
                 <?php if($type>99)echo '<li><a href="index.php?controller=admin">Admin Panel</a></li>';?>

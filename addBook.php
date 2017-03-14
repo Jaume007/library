@@ -7,10 +7,10 @@
  */
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
-    require_once "controllers/librarianController.php";
+    require_once "controllers/bookController.php";
     //filter post
 
-    if((new librarianController('newBAction'))){
+    if((new bookController('newBAction'))==1){
         echo "Succes";
     }else echo "Error";
 }

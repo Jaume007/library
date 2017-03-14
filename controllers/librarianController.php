@@ -18,9 +18,7 @@ class librarianController extends mainController
             case "indexAction":
                 $this->indexAction();
                 break;
-            case "newBAction":
-                $this->addBook();
-                break;
+
             default:
                 new errorController(0);
         }
@@ -31,23 +29,17 @@ class librarianController extends mainController
         require_once "controllers/errorController.php";
         if($this->getType()>48) {
             include_once "views/librarianView.php";
+            require_once "models/user.php";
             $data['user'] = $this->getUser();
             $data['type'] = $this->getType();
+            $users=new user();
+            $users=$users->listUsers($data['type']);
+            $data['users']=$users;
             $page = new librarianView();
             $page->generate($data);
         }else new errorController(1);
 
     }
 
-    function addBook()
-    {
-        include_once "models/book.php";
-        $data['isbn']=$_POST['isbn'];
-        $data['conservation']=$_POST['conservation'];
-        $data['protection']=$_POST['protection'];
-        $data['active']=isset($_POST['status'])?1:0;
-        $db=new book();
-        return $db->addBook($data);
 
-    }
 }
