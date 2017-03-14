@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php require_once realpath(__DIR__."/templates/head.php"); ?>
+    <?php require_once "templates/head.php"; ?>
 </head>
 
 <body>

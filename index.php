@@ -3,6 +3,7 @@ require_once "controllers/indexController.php";
 require_once "controllers/userController.php";
 require_once "controllers/librarianController.php";
 require_once "controllers/catalogController.php";
+require_once "controllers/bookController.php";
 
 
   //This is the only web page that receives requests.

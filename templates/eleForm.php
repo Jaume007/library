@@ -2,7 +2,7 @@
     <div class="row">
         <p>ISBN:</p>
         <div class="input-field">
-            <input type="text" name="isbn" id="isbn">
+            <input type="text" name="isbn" id="isbn" maxlength="10" minlength="10" class="validate">
             <label for="isbn">ISBN: </label>
         </div>
     </div>
@@ -42,25 +42,53 @@
     </div>
 </form>
 <script>
-    $('#submit').on('click', function () {
-        var data = {
-            isbn: $('input[name=isbn]').val(),
-            conservation: $('select[name=conservation]').val(),
-            protection: $('select[name=protection]').val(),
-            status: $('input[name=status]').val()
-        };
-        console.log(data);
-        $.post({
+//    $('#submit').on('click', function () {
+//        var data = {
+//            isbn: $('input[name=isbn]').val(),
+//            conservation: $('select[name=conservation]').val(),
+//            protection: $('select[name=protection]').val(),
+//            status: $('input[name=status]').val()
+//        };
+//        console.log(data);
+//        $.ajax({
+//            type: "POST",
+//            url:"addBook.php",
+//            data: data,
+//            contentType: false,
+//            cache: false,
+//            processData: false,
+//            dataType: "text",
+//            beforeSend: function () {
+//                console.log("hola");
+//            },
+//            succes: function (data) {
+//                console.log(data);
+//                Materialize.toast(data, 2000);
+//            },
+//            error: function (xhr, ajaxOptions, thrownError) {
+//                alert(xhr.status);
+//                alert(thrownError);
+//            }
+//        });
+//    });
+$(document).ready(function () {
+    $("#bookform").submit(function (e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+            url: "addBook.php",
             type: "POST",
-            url:"/~jaume/php/libraryMVC/Ajax/addBook.php",
-            data: data,
-            succes: function (data) {
-                console.log(data);
-                Materialize.toast(data, 2000);
-            },
-            error: function (data) {
-                console.log(data);
+            data: formData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (data) {
+                Materialize.toast(data, 4000);
+                document.getElementById("bookform").reset();
+            }, error: function () {
+                alert("Fallo de JS");
             }
         });
     });
+});
 </script>

@@ -16,9 +16,12 @@ class book extends db
         $data=$this->escape($data);
         return $this->insert("books",$data);
     }
-    public function getBooks($query=0){
+    public function getBooks($query=""){
         include("libs/httpful.phar");
-        $sql=$query==0?"select isbn from books where active=1":$query;
+
+        if($query=="")$sql='select isbn from books where active=1';
+        else $sql=$query;
+
         $isbn=$this->get_results($sql);
 
         $books=[];
@@ -30,8 +33,8 @@ class book extends db
 
             $fullbook=$fullbook['items'][0]['volumeInfo'];
             $books[]=array('title'=>$fullbook['title'],'author'=>$fullbook['authors'][0],
-                'description'=>$fullbook['description'],'isbn'=>$book['isbn'],'published'=>$fullbook['publisehdDate'],
-                'images'=>$fullbook['imageLinks'],'category'=>$fullbook['categories'][0]);
+                'description'=>$fullbook['description'],'isbn'=>$book['isbn'],'published'=>$fullbook['publishedDate'],
+                'image'=>$fullbook['imageLinks']['thumbnail'],'category'=>$fullbook['categories'][0]);
 
         }
         return $books;
