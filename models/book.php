@@ -19,7 +19,7 @@ class book extends db
     public function getBooks($query=""){
         include("libs/httpful.phar");
 
-        if($query=="")$sql='select isbn from books where active=1';
+        if($query=="")$sql='select * from books where active=1';
         else $sql=$query;
 
         $isbn=$this->get_results($sql);
@@ -30,11 +30,12 @@ class book extends db
             $uri="https://www.googleapis.com/books/v1/volumes?q=isbn:".$book['isbn'];
             $fullbook = \Httpful\Request::get($uri)->send();
             $fullbook=json_decode($fullbook,true);
-
+            $book['active']=$book['active']==0?"NO":"YES";
+            if($fullbook['totalItems']==0)continue;
             $fullbook=$fullbook['items'][0]['volumeInfo'];
             $books[]=array('title'=>$fullbook['title'],'author'=>$fullbook['authors'][0],
                 'description'=>$fullbook['description'],'isbn'=>$book['isbn'],'published'=>$fullbook['publishedDate'],
-                'image'=>$fullbook['imageLinks']['thumbnail'],'category'=>$fullbook['categories'][0]);
+                'image'=>$fullbook['imageLinks']['thumbnail'],'category'=>$fullbook['categories'][0],'status'=>$book['active']);
 
         }
         return $books;

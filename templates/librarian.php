@@ -23,31 +23,26 @@
         </div>
     </div>
     <div id="addElement" style="display: none;">
-        <h4>Add Element</h4>
+        <h4>Add Book</h4>
         <div class="col s6 offset-s3">
             <?php include_once "templates/eleForm.php" ?>
         </div>
     </div>
     <div id="deleteUser" style="display: none;">
-        <h4>User Management</h4>
-       <ul class="collection">
-           <?php echo $users?>
-       </ul>
+        <div class="col s6 offset-s3">
+            <h4>User Management</h4>
+            <ul class="collection">
+                <?php echo $users ?>
+            </ul>
+        </div>
     </div>
     <div id="deleteElement" style="display: none;">
-        <h4>Delete Element</h4>
+        <h4>Books Management</h4>
         <div class="col s6 offset-s3">
-            <form method="post" action="index.php?controller=">
-                <div class="input-field">
-                    <input type="text"  name="isbn" id="isbn">
-                    <label for="isbn">ISBN: </label>
-                </div>
-                <div class="center">
-                    <button class="btn waves-effect grey darken-3" type="submit" name="action">
-                        Delete Element
-                    </button>
-                </div>
-            </form>
+
+            <ul class="collection">
+                <?php echo $books ?>
+            </ul>
         </div>
     </div>
 </div>

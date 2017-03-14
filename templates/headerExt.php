@@ -14,7 +14,7 @@
                 <li class="tab" onclick="mostra('register')"><a class="active">Register User</a></li>
                 <li class="tab" onclick="mostra('deleteUser')"><a>User Management</a></li>
                 <li class="tab" onclick="mostra('addElement')"><a>Add Book</a></li>
-                <li class="tab" onclick="mostra('deleteElement')"><a>Delete Book</a></li>
+                <li class="tab" onclick="mostra('deleteElement')"><a>Books Management</a></li>
             </ul>
         </div>
     </nav>

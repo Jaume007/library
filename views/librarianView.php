@@ -1,6 +1,7 @@
 <?php
 
 include_once "views/view.php";
+
 /**
  *
  * Created by PhpStorm.
@@ -15,15 +16,22 @@ class librarianView extends view
     {
         $this->setTemplate("templates/librarian.php");
     }
-    public function generate($data){
+
+    public function generate($data)
+    {
         require_once "widgets/userWidget.php";
-        if(!empty($data['users'])){
-            $users="";
-            foreach ($data['users'] as $user){
-                $users.=new userWidget($user);
-            }
-            $data['users']=$users;
-        }else $data['users']='<h4 class="center-align">No users</h4>';
+        require_once "widgets/bookListWidget.php";
+        $books="";
+        $users = "";
+        foreach ($data['users'] as $user) {
+            $users .= new userWidget($user);
+        }
+        $data['users'] = $users;
+        foreach ($data['books'] as $book){
+            $books.=new bookListWidget($book);
+        }
+        $data['books']=$books;
+
         extract($data);
         include_once $this->getTemplate();
     }

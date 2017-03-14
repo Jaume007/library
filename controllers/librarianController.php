@@ -28,8 +28,13 @@ class librarianController extends mainController
     {
         require_once "controllers/errorController.php";
         if($this->getType()>48) {
+            require_once "models/book.php";
             include_once "views/librarianView.php";
             require_once "models/user.php";
+            $sql="select * from books";
+            $books = new book();
+            $books = $books->getBooks($sql);
+            $data['books']=$books;
             $data['user'] = $this->getUser();
             $data['type'] = $this->getType();
             $users=new user();
