@@ -25,15 +25,17 @@ class catalogController extends mainController
         }
     }
     public function indexAction(){
-        require_once "models/book.php";
-        require_once "views/catalogView.php";
-        $data['user'] = $this->getUser();
-        $data['type'] = $this->getType();
-        $books=new book();
-        $books=$books->getBooks();
-        $data['results']=$books;
-        $view=new catalogView();
-        $view->generate($data);
+
+            require_once "models/book.php";
+            require_once "views/catalogView.php";
+            $data['user'] = $this->getUser();
+            $data['type'] = $this->getType();
+            $books = new book();
+            $books = $books->getBooks();
+            $data['results'] = $books;
+            $view = new catalogView();
+            $view->generate($data);
+
 
     }
     public function searchAction(){

@@ -27,6 +27,7 @@ class userController extends mainController
     public function newAction(){
         require_once "models/user.php";
         $data=$_POST;
+        $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
         $db=new user();
         $db->newUser($data);
     }

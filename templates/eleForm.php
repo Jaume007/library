@@ -42,35 +42,7 @@
     </div>
 </form>
 <script>
-//    $('#submit').on('click', function () {
-//        var data = {
-//            isbn: $('input[name=isbn]').val(),
-//            conservation: $('select[name=conservation]').val(),
-//            protection: $('select[name=protection]').val(),
-//            status: $('input[name=status]').val()
-//        };
-//        console.log(data);
-//        $.ajax({
-//            type: "POST",
-//            url:"addBook.php",
-//            data: data,
-//            contentType: false,
-//            cache: false,
-//            processData: false,
-//            dataType: "text",
-//            beforeSend: function () {
-//                console.log("hola");
-//            },
-//            succes: function (data) {
-//                console.log(data);
-//                Materialize.toast(data, 2000);
-//            },
-//            error: function (xhr, ajaxOptions, thrownError) {
-//                alert(xhr.status);
-//                alert(thrownError);
-//            }
-//        });
-//    });
+
 $(document).ready(function () {
     $("#bookform").submit(function (e) {
         e.preventDefault();

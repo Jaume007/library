@@ -9,7 +9,7 @@
 <?php require_once "templates/header.php"; ?>
 <div class="row">
     <div class="col s6">
-    <form class="" method="get" action="catalog.php">
+    <form class="" method="post" action="index.php?controller=catalog&action=search">
         <div class="input-field">
             <input id="search" type="search" required name="search">
             <label for="search"><i class="material-icons">search</i> Search on the catalogue</label>

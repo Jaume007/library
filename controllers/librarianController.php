@@ -28,11 +28,14 @@ class librarianController extends mainController
 
     function indexAction()
     {
-        include_once "views/librarianView.php";
-        $data['user'] = $this->getUser();
-        $data['type'] = $this->getType();
-        $page = new librarianView();
-        $page->generate($data);
+        require_once "controllers/errorController.php";
+        if($this->getType()>48) {
+            include_once "views/librarianView.php";
+            $data['user'] = $this->getUser();
+            $data['type'] = $this->getType();
+            $page = new librarianView();
+            $page->generate($data);
+        }else new errorController(1);
 
     }
 
