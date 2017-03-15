@@ -8,7 +8,7 @@ require_once "view.php";
  */
 class errorView extends view
 {
-    private $codes=["Page Not Found","Permission Denied","Database Error" ];
+    private $codes=["Page Not Found"=>"HTTP/1.1 404","Permission Denied"=>"HTTP/1.1 403","Database Error"=>"HTTP/1.1 500 Database Error" ];
     function __construct($code)
     {
         $this->setTemplate("templates/error.php");
