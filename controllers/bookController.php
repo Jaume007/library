@@ -29,6 +29,7 @@ class bookController extends mainController
         require_once "models/book.php";
         $data['user'] = $this->getUser();
         $data['type'] = $this->getType();
+        $data['id']=$this->getId();
         $sql='Select isbn from books where isbn='.$_GET['id'];
         $books=new book();
         $book=$books->getBooks($sql)[0];

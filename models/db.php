@@ -193,10 +193,9 @@ class db
     {
 
         $row = null;
-
         $results = $this->conn->query($query);
         if ($this->conn->error) {
-
+            echo $this->conn->error;
             return false;
         } else {
             $row = array();

@@ -17,9 +17,16 @@ class mainController
      */
     public function __construct()
     {
-        $this->user=$_SESSION['user'];
-        $this->type=$_SESSION['type'];
-        $this->id=$_SESSION['id'];
+        if(isset($_SESSION['user'])) {
+            $this->user = $_SESSION['user'];
+            $this->type = $_SESSION['type'];
+            $this->id = $_SESSION['id'];
+        }
+        else {
+            $this->user=0;
+            $this->type=0;
+            $this->id=0;
+        }
     }
 
     /**

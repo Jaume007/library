@@ -25,4 +25,13 @@ class user extends db
         $data=$this->get_results($sql);
         return $data;
     }
+    public function getUser($id){
+        $sql='select * from users where id='.$id;
+        $data=$this->get_results($sql);
+
+        return $data[0];
+    }
+    public function updateUser($data,$id){
+        return $this->update('users',$data,$id);
+    }
 }

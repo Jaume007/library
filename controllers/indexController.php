@@ -25,6 +25,7 @@ class indexController extends mainController
         $data['popular']="TODO";
         $data['user']=$this->getUser();
         $data['type']=$this->getType();
+        $data['id']=$this->getId();
         $page=new mainView();
         $page->generate($data);
     }

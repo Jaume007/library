@@ -37,6 +37,7 @@ class librarianController extends mainController
             $data['books']=$books;
             $data['user'] = $this->getUser();
             $data['type'] = $this->getType();
+            $data['id']=$this->getId();
             $users=new user();
             $users=$users->listUsers($data['type']);
             $data['users']=$users;
