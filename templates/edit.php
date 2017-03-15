@@ -27,7 +27,7 @@
         </div>
         <div class="col s8 flow-text">
 
-            <form method="post" action="index.php?controller=user&action=update">
+            <form method="post" action="index.php?controller=user&action=update&id=<?php echo $id?>">
                 <div class="row">
                     <p>Username:</p>
                     <div class="input-field">
@@ -84,16 +84,18 @@
                         <label for="telf">Telephone: </label>
                     </div>
                 </div>
-                <?php echo $utype?>
+                <?php echo $privi?>
 
 
                 <div class="center">
                     <button class="btn waves-effect grey darken-3" type="submit">
                         Update
                     </button>
+                    <a class="btn waves-effect grey darken-3" href="index.php?controller=user&action=del&id=<?php echo $id?>">Unregister</a>
                 </div>
             </form>
-            <a class="btn waves-effect grey darken-3" href="index.php?controller=user&action=del&id=<?php echo $id?>">Unregister</a>
+
+
         </div>
 
     </div>

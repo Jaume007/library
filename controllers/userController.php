@@ -26,6 +26,9 @@ class userController extends mainController
             case "editAction";
                 $this->editAction();
                 break;
+            case "updateAction";
+                $this->updateAction();
+                break;
             default:
                 new errorController(0);
         }
@@ -54,6 +57,7 @@ class userController extends mainController
             $id = $_GET['id'];
             $data=new user();
             $data=$data->getUser($id);
+            $data['type']=$this->getType();
             $page=new profileView();
             $page->generate($data);
 
@@ -67,10 +71,25 @@ class userController extends mainController
             $id = $_GET['id'];
             $data=new user();
             $data=$data->getUser($id);
-            $data['uType']=$this->getType();
+            $data['uType']=$data['type'];
+            $data['type']=$this->getType();
+
             $page=new editView();
             $page->generate($data);
 
         }else new errorController(1);
+    }
+    public function updateAction(){
+        require_once "models/user.php";
+
+        $data=[];
+        foreach ($_POST as $index => $item) {
+            if ($item!="") $data[$index]=$item;
+        }
+        $id['id']=$_GET['id'];
+        $db=new user();
+        $db->updateUser($data,$id);
+        header("Location: index.php?controller=user&action=show&id=".$id['id']);
+
     }
 }

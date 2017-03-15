@@ -359,7 +359,7 @@ class db
 
         $query = $this->conn->query($sql);
         if ($this->conn->error) {
-            return false;
+            return $this->conn->error;
         } else {
             return true;
         }
