@@ -21,6 +21,7 @@ class mainController
             $this->userSettings['type'] = $_SESSION['type'];
             $this->userSettings['id'] = $_SESSION['id'];
         } else {
+            $this->userSettings = $this->getSettings();
             $this->userSettings['user'] = 0;
             $this->userSettings['type'] = 0;
             $this->userSettings['id'] = 0;

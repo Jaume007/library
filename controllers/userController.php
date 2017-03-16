@@ -1,5 +1,6 @@
 <?php
 require_once "controllers/mainController.php";
+
 /**
  * Created by PhpStorm.
  * User: jaume
@@ -29,91 +30,118 @@ class userController extends mainController
             case "updateAction";
                 $this->updateAction();
                 break;
+            case "logAction";
+                $this->logInOut();
+                break;
             default:
                 new errorController(0);
         }
     }
-    public function newAction(){
+
+    public function newAction()
+    {
         require_once "models/user.php";
-        $data=$_POST;
-        $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
-        $db=new user();
+        $data = $_POST;
+        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+        $db = new user();
         $db->newUser($data);
     }
-    public function delAction(){
+
+    public function delAction()
+    {
         require_once "models/user.php";
         require_once "indexController.php";
-        $user['id']=$_GET['id'];
-        $db=new user();
+        $user['id'] = $_GET['id'];
+        $db = new user();
         $db->deleteUser($user);
         new indexController("indexAction");
 
     }
-    public function showAction(){
-        require_once "controllers/errorController.php";
-        $data=$this->getUserSettings();
 
-        if($data['type']>($data['member']-1)) {
+    public function showAction()
+    {
+        require_once "controllers/errorController.php";
+        $data = $this->getUserSettings();
+
+        if ($data['type'] > ($data['member'] - 1)) {
             require_once "models/user.php";
             require_once "views/profileView.php";
             $id = $_GET['id'];
-            $data=$this->getUserSettings();
-            unset($data['user'],$data['id']);
-            $user=new user();
-            $user=$user->getUser($id);
+            $data = $this->getUserSettings();
+            unset($data['user'], $data['id']);
+            $user = new user();
+            $user = $user->getUser($id);
             unset($user['type']);
-            $data=array_merge($data,$user);
+            $data = array_merge($data, $user);
 
-            $page=new profileView();
+            $page = new profileView();
             $page->generate($data);
 
-        }else new errorController(1);
+        } else new errorController(1);
     }
-    public function editAction(){
-        require_once "controllers/errorController.php";
-        $data=$this->getUserSettings();
 
-        if($data['type']>($data['member']-1)) {
+    public function editAction()
+    {
+        require_once "controllers/errorController.php";
+        $data = $this->getUserSettings();
+
+        if ($data['type'] > ($data['member'] - 1)) {
             require_once "models/user.php";
             require_once "views/editView.php";
             $id = $_GET['id'];
 
-            unset($data['user'],$data['id']);
-            $user=new user();
-            $user=$user->getUser($id);
-            $data['uType']=$user['type'];
+            unset($data['user'], $data['id']);
+            $user = new user();
+            $user = $user->getUser($id);
+            $data['uType'] = $user['type'];
             unset($user['type']);
-            $data=array_merge($data,$user);
+            $data = array_merge($data, $user);
 
-            $page=new editView();
+            $page = new editView();
             $page->generate($data);
 
-        }else new errorController(1);
+        } else new errorController(1);
     }
-    public function updateAction(){
+
+    public function updateAction()
+    {
         require_once "models/user.php";
 
-        $data=[];
+        $data = [];
         foreach ($_POST as $index => $item) {
-            if ($item!="") $data[$index]=$item;
+            if ($item != "") $data[$index] = $item;
         }
-        $id['id']=$_GET['id'];
-        $db=new user();
-        $db->updateUser($data,$id);
-        header("Location: index.php?controller=user&action=show&id=".$id['id']);
+        $id['id'] = $_GET['id'];
+        $db = new user();
+        $db->updateUser($data, $id);
+        header("Location: index.php?controller=user&action=show&id=" . $id['id']);
 
     }
-    public function logInOut(){
-        $user=$_POST['user'];
-        $pwd=$_POST['password'];
+
+    public function logInOut()
+    {
+        $user = $_POST['user'];
+
+        $pwd = $_POST['password'];
         if ($user == '-1' && $pwd == '-1') {
             session_start();
             session_unset();
             session_destroy();
             setcookie("PHPSESSID", "", time() - 1000);
-            echo ".replace(index.php)";
-        }else{
+            echo 0;
+        } else {
             require_once "models/user.php";
+            $db = new user();
+            $user=$db->checkPwd($user);
+
+            if(password_verify($pwd,$user['password'])){
+                session_start();
+                $_SESSION['user']=$user['user'];
+                $_SESSION['type']=$user['type'];
+                $_SESSION['id']=$user['id'];
+                echo 1;
+            }else echo 3;
+
 
         }
 

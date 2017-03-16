@@ -6,6 +6,7 @@ require_once "controllers/catalogController.php";
 require_once "controllers/bookController.php";
 require_once "controllers/errorController.php";
 require_once "controllers/adminController.php";
+require_once "files/functions.php";
 
 
   //This is the only web page that receives requests.
@@ -18,10 +19,13 @@ if (!empty($_GET)){
 
 if (!empty($_POST))$_POST=sanitize($_POST);
 //testing to remove
-session_start();
+//session_start();
 $_SESSION["user"]="test";
 $_SESSION["type"]="50";
 $_SESSION['id']=3;
+//if(isset($_COOKIE['PHPSESSID'])){
+//    session_start();
+//}
 
 if (isset($_GET['controller'])) {
     $controller = $_GET['controller'] . "Controller";
@@ -49,14 +53,5 @@ if (isset($_GET['controller'])) {
 
 
 
-function sanitize($data){
-    if (!is_array($data)) {
 
-        $data = trim(htmlentities($data, ENT_QUOTES, 'UTF-8', false));
-    } else {
-        //Self call function to sanitize array data
-        $data = array_map('sanitize', $data);
-    }
-    return $data;
-}
 ?>

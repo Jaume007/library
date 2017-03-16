@@ -1,6 +1,6 @@
 <div id="login" style="display: none">
     <!-- size 2 en index 6 en resto -->
-    <form class="col s6" method="POST" action="utilities.php">
+    <form class="col s6" method="POST" onsubmit="return false" id="loginForm">
         <div class="row col s6 offset s6 right grey lighten-1">
             <div class="input-field">
                 <i class="material-icons prefix">account_circle</i>
@@ -23,4 +23,41 @@
             </div>
         </div>
     </form>
+    <script>
+
+        $(document).ready(function () {
+            $("#loginForm").submit(function (e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    url: "login.php",
+                    type: "POST",
+                    data: formData,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function (data) {
+                        console.log(data);
+                        switch (true) {
+                            case data==0:
+                                window.location.replace("index.php");
+                                break;
+                            case data==1:
+                                Materialize.toast("Login succesfull", 4000);
+                                setTimeout(function () {
+                                    window.location.reload();
+                                }, 4500);
+                                break;
+                            case data==3:
+                                Materialize.toast("Incorrect user or password", 4000);
+                                break;
+
+                        }
+                    }, error: function (data) {
+                        Materialize.toast(data, 4000);
+                    }
+                });
+            });
+        });
+    </script>
 </div>

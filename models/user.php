@@ -34,4 +34,10 @@ class user extends db
     public function updateUser($data,$id){
         return $this->update('users',$data,$id);
     }
+    public function checkPwd($user){
+        $user=$this->escape($user);
+        $sql="select * from users where user='".$user."'";
+        $res=$this->get_results($sql)[0];
+        return $res;
+    }
 }

@@ -23,8 +23,6 @@ class indexController extends mainController
         include_once "views/mainView.php";
         include_once "models/book.php";
         $data=$this->getUserSettings();
-        $data['newbooks']="TODO";
-        $data['popular']="TODO";
         $limit=" ORDER BY id DESC limit 5";
         $where['active']=1;
         $newest=new book();
