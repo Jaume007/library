@@ -21,6 +21,7 @@ class indexController extends mainController
     }
     function indexAction(){
         include_once "views/mainView.php";
+        include_once "models/book.php";
         $data=$this->getUserSettings();
         $data['newbooks']="TODO";
         $data['popular']="TODO";

@@ -20,7 +20,7 @@ class bookListWidget
          ISBN: '.$data['isbn'].'<br/><br/>
       </p>
       <a class="btn waves-effect grey darken-3" href="index.php?controller=book&action=hist&id='.$data['isbn'].'">History</a>
-      <a  href="index.php?controller=book&action=delete&id='.$data['isbn'].'" class="btn waves-effect grey darken-3">Delete</a>
+      <a  href="index.php?controller=book&action=update&status='.$data['status'].'&id='.$data['isbn'].'" class="btn waves-effect grey darken-3">Change Status</a>
      
       
     </li>';

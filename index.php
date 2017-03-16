@@ -5,6 +5,7 @@ require_once "controllers/librarianController.php";
 require_once "controllers/catalogController.php";
 require_once "controllers/bookController.php";
 require_once "controllers/errorController.php";
+require_once "controllers/adminController.php";
 
 
   //This is the only web page that receives requests.
@@ -19,20 +20,22 @@ if (!empty($_POST))$_POST=sanitize($_POST);
 //testing to remove
 session_start();
 $_SESSION["user"]="test";
-$_SESSION["type"]="100";
+$_SESSION["type"]="50";
 $_SESSION['id']=3;
 
 if (isset($_GET['controller'])) {
     $controller = $_GET['controller'] . "Controller";
     if(file_exists('controllers/'.$controller.'.php')) {
-        if (isset($_GET['action'])) {
-            $action = $_GET['action'] . "Action";
-            new $controller($action);
-        } else {
-            $action = "indexAction";
+        if(class_exists($controller)) {
+            if (isset($_GET['action'])) {
+                $action = $_GET['action'] . "Action";
+                new $controller($action);
+            } else {
+                $action = "indexAction";
 
-            new $controller($action);
-        }
+                new $controller($action);
+            }
+        }else new errorController(0);
     }else {
         new errorController(0);
 

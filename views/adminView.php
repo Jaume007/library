@@ -3,17 +3,17 @@ require_once "views/view.php";
 /**
  * Created by PhpStorm.
  * User: jaume
- * Date: 14/03/17
- * Time: 9:49
+ * Date: 16/03/17
+ * Time: 10:52
  */
-class bookView extends view
+class adminView extends view
 {
     function __construct()
     {
-        $this->setTemplate("templates/book.php");
+        $this->setTemplate("templates/admin.php");
     }
-    public function generate($book){
-        extract($book);
+    public function generate($data){
+        extract($data);
         include_once $this->getTemplate();
     }
 }

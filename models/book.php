@@ -16,11 +16,18 @@ class book extends db
         $data=$this->escape($data);
         return $this->insert("books",$data);
     }
-    public function getBooks($query=""){
+    public function getBooks($where=""){
         include("libs/httpful.phar");
 
-        if($query=="")$sql='select * from books where active=1';
-        else $sql=$query;
+        if (!empty($where)) {
+            foreach ($where as $field => $value) {
+                $value = $value;
+                $clause[] = "$field = '$value'";
+            }
+            $sql .= ' WHERE ' . implode(' AND ', $clause);
+        }
+        if($query!="")$sql='select * from books where'.$query;
+        else $sql='select * from books';
 
         $isbn=$this->get_results($sql);
 

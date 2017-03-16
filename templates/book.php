@@ -23,7 +23,7 @@
                 <figcaption class="center-align">Cover</figcaption>
             </figure>
             <div class="center">
-           <a href="lending.php?id=<?php echo $isbn?>" class="btn waves-effect grey darken-4">Book</a>
+           <?php if($type>($member-1)) echo'<a href="index.php?controller=booking&id='.$isbn.'" class="btn waves-effect grey darken-4">Book</a>';?>
             </div>
         </div>
         <div class="col s8 flow-text">
