@@ -27,9 +27,7 @@ class bookController extends mainController
     public function indexAction(){
         require_once "views/bookView.php";
         require_once "models/book.php";
-        $data['user'] = $this->getUser();
-        $data['type'] = $this->getType();
-        $data['id']=$this->getId();
+        $data=$this->getUserSettings();
         $sql='Select isbn from books where isbn='.$_GET['id'];
         $books=new book();
         $book=$books->getBooks($sql)[0];

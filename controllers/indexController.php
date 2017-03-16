@@ -21,11 +21,10 @@ class indexController extends mainController
     }
     function indexAction(){
         include_once "views/mainView.php";
+        $data=$this->getUserSettings();
         $data['newbooks']="TODO";
         $data['popular']="TODO";
-        $data['user']=$this->getUser();
-        $data['type']=$this->getType();
-        $data['id']=$this->getId();
+
         $page=new mainView();
         $page->generate($data);
     }

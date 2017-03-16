@@ -51,13 +51,19 @@ class userController extends mainController
     }
     public function showAction(){
         require_once "controllers/errorController.php";
-        if($this->getType()>0) {
+        $data=$this->getUserSettings();
+
+        if($data['type']>($data['member']-1)) {
             require_once "models/user.php";
             require_once "views/profileView.php";
             $id = $_GET['id'];
-            $data=new user();
-            $data=$data->getUser($id);
-            $data['type']=$this->getType();
+            $data=$this->getUserSettings();
+            unset($data['user'],$data['id']);
+            $user=new user();
+            $user=$user->getUser($id);
+            unset($user['type']);
+            $data=array_merge($data,$user);
+
             $page=new profileView();
             $page->generate($data);
 
@@ -65,14 +71,19 @@ class userController extends mainController
     }
     public function editAction(){
         require_once "controllers/errorController.php";
-        if($this->getType()>0) {
+        $data=$this->getUserSettings();
+
+        if($data['type']>($data['member']-1)) {
             require_once "models/user.php";
             require_once "views/editView.php";
             $id = $_GET['id'];
-            $data=new user();
-            $data=$data->getUser($id);
-            $data['uType']=$data['type'];
-            $data['type']=$this->getType();
+
+            unset($data['user'],$data['id']);
+            $user=new user();
+            $user=$user->getUser($id);
+            $data['uType']=$user['type'];
+            unset($user['type']);
+            $data=array_merge($data,$user);
 
             $page=new editView();
             $page->generate($data);

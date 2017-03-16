@@ -27,17 +27,17 @@ class librarianController extends mainController
     function indexAction()
     {
         require_once "controllers/errorController.php";
-        if($this->getType()>48) {
+        $data=$this->getUserSettings();
+        if($data['type']>($data['librarian']-1)) {
             require_once "models/book.php";
             include_once "views/librarianView.php";
             require_once "models/user.php";
+
             $sql="select * from books";
             $books = new book();
             $books = $books->getBooks($sql);
             $data['books']=$books;
-            $data['user'] = $this->getUser();
-            $data['type'] = $this->getType();
-            $data['id']=$this->getId();
+
             $users=new user();
             $users=$users->listUsers($data['type']);
             $data['users']=$users;

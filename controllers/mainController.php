@@ -8,72 +8,52 @@
  */
 class mainController
 {
-    private $user;
-    private $type;
-    private $id;
+    private $userSettings;
 
     /**
      * mainController constructor.
      */
     public function __construct()
     {
-        if(isset($_SESSION['user'])) {
-            $this->user = $_SESSION['user'];
-            $this->type = $_SESSION['type'];
-            $this->id = $_SESSION['id'];
+        if (isset($_SESSION['user'])) {
+            $this->userSettings = $this->getSettings();
+            $this->userSettings['user'] = $_SESSION['user'];
+            $this->userSettings['type'] = $_SESSION['type'];
+            $this->userSettings['id'] = $_SESSION['id'];
+        } else {
+            $this->userSettings['user'] = 0;
+            $this->userSettings['type'] = 0;
+            $this->userSettings['id'] = 0;
         }
-        else {
-            $this->user=0;
-            $this->type=0;
-            $this->id=0;
-        }
+    }
+
+    private function getSettings()
+    {
+        $array = json_decode(file_get_contents("files/settings.json"), true);
+        $return = array_merge($array['protection'], $array['privileges']);
+        $return['maxItems'] = $array['maxItems'];
+
+        return $return;
+    }
+
+    /**
+     * @return array
+     */
+    public function getUserSettings(): array
+    {
+        return $this->userSettings;
+    }
+
+    /**
+     * @param array $userSettings
+     */
+    public function setUserSettings(array $userSettings)
+    {
+        $this->userSettings = $userSettings;
     }
 
     /**
      * @return mixed
      */
-    public function getUser()
-    {
-        return $this->user;
-    }
 
-    /**
-     * @param mixed $user
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param mixed $type
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 }

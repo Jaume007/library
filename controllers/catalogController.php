@@ -31,9 +31,7 @@ class catalogController extends mainController
 
         require_once "models/book.php";
         require_once "views/catalogView.php";
-        $data['user'] = $this->getUser();
-        $data['type'] = $this->getType();
-        $data['id']=$this->getId();
+        $data=$this->getUserSettings();
         $books = new book();
         $books = $books->getBooks();
         $data['results'] = $books;
@@ -47,9 +45,7 @@ class catalogController extends mainController
     {
         require_once "models/book.php";
         require_once "views/catalogView.php";
-        $data['user'] = $this->getUser();
-        $data['type'] = $this->getType();
-        $data['id']=$this->getId();
+        $data=$this->getUserSettings();
         $books = new book();
         $books = $books->getBooks();
         $options = $_POST['options'];
