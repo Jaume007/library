@@ -16,9 +16,9 @@ class book extends db
         $data=$this->escape($data);
         return $this->insert("books",$data);
     }
-    public function getBooks($where=""){
+    public function getBooks($where="",$limit=""){
         include("libs/httpful.phar");
-
+        $sql='select * from books';
         if (!empty($where)) {
             foreach ($where as $field => $value) {
                 $value = $value;
@@ -26,8 +26,7 @@ class book extends db
             }
             $sql .= ' WHERE ' . implode(' AND ', $clause);
         }
-        if($query!="")$sql='select * from books where'.$query;
-        else $sql='select * from books';
+        if($limit!="")$sql.=$limit;
 
         $isbn=$this->get_results($sql);
 
@@ -45,6 +44,7 @@ class book extends db
                 'image'=>$fullbook['imageLinks']['thumbnail'],'category'=>$fullbook['categories'][0],'status'=>$book['active']);
 
         }
+
         return $books;
     }
     public function deleteBook($book){

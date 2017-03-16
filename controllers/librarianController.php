@@ -33,9 +33,9 @@ class librarianController extends mainController
             include_once "views/librarianView.php";
             require_once "models/user.php";
 
-            $sql="select * from books";
+
             $books = new book();
-            $books = $books->getBooks($sql);
+            $books = $books->getBooks();
             $data['books']=$books;
 
             $users=new user();

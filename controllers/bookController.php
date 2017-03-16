@@ -34,9 +34,10 @@ class bookController extends mainController
         require_once "views/bookView.php";
         require_once "models/book.php";
         $data = $this->getUserSettings();
-        $sql = 'Select isbn from books where isbn=' . $_GET['id'];
+        $where['isbn']= $_GET['id'];
         $books = new book();
-        $book = $books->getBooks($sql)[0];
+        $book = $books->getBooks($where)[0];
+
         $data = array_merge($data, $book);
         $page = new bookView();
         $page->generate($data);

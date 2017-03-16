@@ -103,4 +103,19 @@ class userController extends mainController
         header("Location: index.php?controller=user&action=show&id=".$id['id']);
 
     }
+    public function logInOut(){
+        $user=$_POST['user'];
+        $pwd=$_POST['password'];
+        if ($user == '-1' && $pwd == '-1') {
+            session_start();
+            session_unset();
+            session_destroy();
+            setcookie("PHPSESSID", "", time() - 1000);
+            echo ".replace(index.php)";
+        }else{
+            require_once "models/user.php";
+
+        }
+
+    }
 }

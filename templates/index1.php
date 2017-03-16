@@ -30,15 +30,10 @@
     <div id="novedades">
         <h3 class="left-align">New Arrivals</h3>
         <div class="row">
-            <?php echo $newbooks ?>
+            <?php echo $newest ?>
         </div>
     </div>
-    <div id="popular">
-        <h3 class="left-align">Most Popular</h3>
-        <div class="row">
-            <?php echo $popular ?>
-        </div>
-    </div>
+
 </div>
 <?php include_once "templates/footer.php" ?>
 </body>

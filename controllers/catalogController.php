@@ -32,8 +32,9 @@ class catalogController extends mainController
         require_once "models/book.php";
         require_once "views/catalogView.php";
         $data=$this->getUserSettings();
+        $where['active']=1;
         $books = new book();
-        $books = $books->getBooks();
+        $books = $books->getBooks($where);
         $data['results'] = $books;
         $view = new catalogView();
         $view->generate($data);
@@ -46,8 +47,9 @@ class catalogController extends mainController
         require_once "models/book.php";
         require_once "views/catalogView.php";
         $data=$this->getUserSettings();
+        $where['active']=1;
         $books = new book();
-        $books = $books->getBooks();
+        $books = $books->getBooks($where);
         $options = $_POST['options'];
         $text = $_POST['search'];
         $matches = [];

@@ -16,6 +16,12 @@ class mainView extends view
         $this->setTemplate("templates/index1.php");
     }
     public function generate($data){
+        require_once "widgets/bookWidget.php";
+        $books="";
+        foreach ($data['newest'] as $book){
+            $books.=new bookWidget($book);
+        }
+        $data['newest']=$books;
         extract($data);
         include_once $this->getTemplate();
     }
