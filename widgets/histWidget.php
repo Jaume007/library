@@ -11,7 +11,7 @@ class histWidget
     private $element;
     public function __construct($data,$extended=0)
     {
-        if ($extended==1)$ext='<p>User: '.$data['user'].'</p>';
+        if ($extended==1)$ext='<p>User: '.$data['user'].'</p><br/><br/>';
         else $ext="";
         $html='<li class="collection-item avatar">
       <img src='.$data["image"].' alt="" class="circle">

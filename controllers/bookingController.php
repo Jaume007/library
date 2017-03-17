@@ -9,7 +9,23 @@ require_once "controllers/mainController.php";
 class bookingController extends mainController
 {
     private $returnDate;
+    private $html;
 
+    /**
+     * @return mixed
+     */
+    public function getHtml()
+    {
+        return $this->html;
+    }
+
+    /**
+     * @param mixed $html
+     */
+    public function setHtml($html)
+    {
+        $this->html = $html;
+    }
     /**
      * @return DateTime
      */
@@ -41,6 +57,9 @@ class bookingController extends mainController
                 break;
             case "bookAction":
                 $this->bookAction();
+                break;
+            case "todayAction":
+                $this->todayAction();
                 break;
             default:
                 new errorController(0);
@@ -115,6 +134,19 @@ class bookingController extends mainController
             new userController("histAction");
         }
 
+
+    }
+    public function todayAction(){
+        $date=new DateTime($_POST['pickDate']);
+        require_once "models/booking.php";
+        $cond=" where returnDate<='".$date->format('Y-m-d')."' and realReturn is null";
+        $res=new booking();
+        $res=$res->getBookings("","all",$cond);
+        require_once "views/todayReturnsView.php";
+        $res=(new todayReturnsView($res))->getHtml();
+
+
+        $this->setHtml($res);
 
     }
 }

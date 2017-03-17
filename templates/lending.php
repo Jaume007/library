@@ -2,8 +2,7 @@
 <html>
 <head>
     <?php include_once "templates/head.php"; ?>
-    <script src="libs/picker.date.js"></script>
-    <script src="libs/picker.js"></script>
+
 </head>
 
 <body>

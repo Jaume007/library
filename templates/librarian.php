@@ -45,7 +45,45 @@
             </ul>
         </div>
     </div>
+    <div id="todayReturns" style="display: none;">
+        <h4>Returns Management</h4>
+        <div class="col s6 offset-s3">
+
+            <?php include_once "templates/todayReturns.php";?>
+        </div>
+    </div>
 </div>
 <?php include_once "templates/footer.php" ?>
+<script>
+    $(document).ready(function () {
+
+
+        $('.datepicker').pickadate({
+
+        });
+        $("#returnsForm").submit(function (e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                url: "todayReturns.php",
+                type: "POST",
+                data: formData,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function (data) {
+                    Materialize.toast(data, 4000);
+                    document.getElementById("results").innerHTML=data;
+                    document.getElementById("resdiv").style.display = "block";
+
+                }, error: function () {
+                    alert("Fallo de JS");
+                }
+            });
+        });
+    })
+
+
+</script>
 </body>
 </html>

@@ -11,5 +11,6 @@ function mostra(id){
     else document.getElementById("addElement").style.display = "none";
     if (id=='deleteElement')document.getElementById("deleteElement").style.display = "block";
     else document.getElementById("deleteElement").style.display = "none";
-
+    if (id=='todayReturns')document.getElementById("todayReturns").style.display = "block";
+    else document.getElementById("todayReturns").style.display = "none";
 }
