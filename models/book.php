@@ -36,7 +36,7 @@ class book extends db
             $fullbook = \Httpful\Request::get($uri)->send();
             $fullbook=json_decode($fullbook,true);
             $book['active']=$book['active']==0?"NO":"YES";
-            if($fullbook['totalItems']==0)continue;
+           // if($fullbook['totalItems']==0)continue;
             $fullbook=$fullbook['items'][0]['volumeInfo'];
             $books[]=array('title'=>$fullbook['title'],'author'=>$fullbook['authors'][0],
                 'description'=>$fullbook['description'],'isbn'=>$book['isbn'],'published'=>$fullbook['publishedDate'],
