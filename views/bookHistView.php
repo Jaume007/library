@@ -16,7 +16,7 @@ class bookHistView extends view
         if (is_array($data['bookings'])){
             require_once "widgets/histWidget.php";
             $cadena="";
-            var_dump($data['bookings']);
+
             foreach ($data['bookings'] as $booking){
                 $array1=[];
                 $array1['image']=$booking['photo'];

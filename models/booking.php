@@ -78,12 +78,13 @@ class booking extends db
             }
             $sql .= ' WHERE ' . implode(' AND ', $clause);
         }
-
+        echo $sql;
         $res=$this->get_results($sql);
+
 
         if ($type=="user") {
             if (is_array($res[0])) {
-                foreach ($res as $record) {
+                foreach ($res as &$record) {
                     require_once "models/user.php";
                     $user = (new user())->getUser($record['user_id']);
                     $record = array_merge($record, $user);
@@ -93,7 +94,7 @@ class booking extends db
         }else{
             //change for books
             if (is_array($res[0])) {
-                foreach ($res as $record) {
+                foreach ($res as &$record) {
                     require_once "models/user.php";
                     $user = (new user())->getUser($record['user_id']);
                     $record = array_merge($record, $user);

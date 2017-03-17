@@ -78,9 +78,10 @@ class bookController extends mainController
         $book = $books->getBooks($where)[0];
         $data=$this->getUserSettings();
         $data=array_merge($data,$book);
-        $bookid['id']=(new book())->getId($_GET['id']);
+        $bookid['book_id']=(new book())->getId($_GET['id']);
 
         $res=(new booking())->getBookings($bookid,"user");
+
         $data['bookings']=$res;
         (new bookHistView())->generate($data);
 
