@@ -56,7 +56,7 @@
 
         $('.datepicker').pickadate({
             clear: '',
-            //min: new Date(),
+            min: new Date(),
             disable: [
                 <?php echo $blocked?>
             ]

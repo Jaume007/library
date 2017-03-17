@@ -143,11 +143,13 @@ class userController extends mainController
             $db = new user();
             $user = $db->checkPwd($user);
 
+
             if (password_verify($pwd, $user['password'])) {
                 session_start();
                 $_SESSION['user'] = $user['user'];
                 $_SESSION['type'] = $user['type'];
                 $_SESSION['id'] = $user['id'];
+
                 echo 1;
             } else echo 3;
 

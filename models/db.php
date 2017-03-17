@@ -109,7 +109,6 @@ class db
         $values = '(' . implode(', ', $values) . ')';
 
         $sql .= $fields . ' VALUES ' . $values;
-
         $query = $this->conn->query($sql);
 
         if ($this->conn->error) {

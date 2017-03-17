@@ -26,6 +26,7 @@ class mainController
             $this->userSettings['type'] = 0;
             $this->userSettings['id'] = 0;
         }
+
     }
 
     private function getSettings()

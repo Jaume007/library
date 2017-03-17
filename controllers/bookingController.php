@@ -120,20 +120,24 @@ class bookingController extends mainController
         $returnDate=$this->getReturnDate();
         $isbn=$_REQUEST['isbn'];
         $data=$this->getUserSettings();
+
         $pickDate=new DateTime($_POST['pickDate']);
         $in=$pickDate->format('Y-m-d');
         $out=$returnDate->format('Y-m-d');
         $booking=new booking();
         $checkDate=$booking->checkDate($in,$out,$isbn);
-
         $checkBookings=$booking->checkBookings($data['id']);
-
-        if($checkBookings>$data['maxItems'] || $checkDate>0){
+        if($checkBookings>$data['maxItems'] | $checkDate>0){
+            echo $checkBookings;
+            echo $checkDate;
+            exit();
             require_once "controllers/errorController.php";
             new errorController(3,"Invalid date or too many bookings");
         }else{
+            require_once "controllers/userController.php";
             $booking->saveBooking($in,$out,$isbn,$data['id']);
-            new userController("histAction");
+
+            new userController("showAction");
         }
 
 
@@ -153,7 +157,7 @@ class bookingController extends mainController
     }
     public function retAction(){
         $bookingID=$_GET['idB'];
-        $book=$_GET['isbn'];
+        $book=$_GET['id'];
         $date=new DateTime('now');
         $vars=[];
         $where['id']=$bookingID;
@@ -161,7 +165,7 @@ class bookingController extends mainController
         require_once "models/booking.php";
         require_once "controllers/bookController.php";
         (new booking())->update('bookings',$vars,$where);
-        new bookController("histAction");
+        header("Location: index.php?controller=book&action=hist&id=".$book);
 
     }
 }

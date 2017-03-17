@@ -32,7 +32,7 @@ class booking extends db
         $isbn = $this->escape($isbn);
         $id = "select id from books where isbn=" . $isbn;
         $id = $this->get_results($id)[0]['id'];
-        $sql = "select pickDate, returnDate from bookings where book_id=" . $id . " and realReturn is null";
+        $sql = "select pickDate, returnDate from bookings where book_id='" . $id . "' and realReturn is null";
         return $this->get_results($sql);
     }
 
@@ -41,29 +41,33 @@ class booking extends db
         require_once "models/book.php";
         $id = new book();
         $id = $id->getId($isbn);
-        $sql = "select COUNT(*) as res from bookings where realReturn is NULL and book_id=" . $id . " and (pickDate>='" . $in . "' and pickDate<='" . $out . "') or (returnDate>='" . $in . "' and returnDate<='" . $out . "')";
-
+        $sql = "select COUNT(*) as res from bookings where realReturn is NULL and book_id='" . $id . "' and ((pickDate>='" . $in . "' and pickDate<='" . $out . "') or (returnDate>='" . $in . "' and returnDate<='" . $out . "'))";
         $res = $this->get_results($sql)[0]['res'];
         return $res;
     }
 
     public function checkBookings($id)
     {
-        $sql = "select count(*) as res from bookings where user_id=" . $id . " and realReturn is NULL";
+        $sql = "select count(*) as res from bookings where user_id='" . $id . "' and realReturn is NULL";
+
         $res = $this->get_results($sql)[0]['res'];
         return $res;
     }
 
     public function saveBooking($in, $out, $isbn, $id)
     {
+
         require_once "models/book.php";
         $idB = new book();
         $idB = $idB->getId($isbn);
+
         $vars['pickDate'] = $in;
         $vars['returnDate'] = $out;
         $vars['book_id'] = $idB;
         $vars['user_id'] = $id;
         $vars = $this->escape($vars);
+
+
         $this->insert('bookings', $vars);
     }
 

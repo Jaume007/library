@@ -73,9 +73,9 @@ class bookController extends mainController
         require_once "models/booking.php";
         require_once "views/bookHistView.php";
         $where['isbn']= $_GET['id'];
-
         $books = new book();
         $book = $books->getBooks($where)[0];
+        unset($book['id']);
         $data=$this->getUserSettings();
         $data=array_merge($data,$book);
         $bookid['book_id']=(new book())->getId($_GET['id']);
