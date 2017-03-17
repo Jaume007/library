@@ -8,7 +8,7 @@
                 <?php if($type>($librarian-1))echo '<li><a href="index.php?controller=librarian">Library Management</a></li>';?>
                 <?php if($type>($member-1))echo '<li><a href="index.php?controller=user&action=show&id='.$id.'">Profile</a></li>';?>
                 <?php if($user=="0")echo '<li><a href="#" target="_self" onclick="login()">Login/Register</a></li>';
-                else echo '<li><a href="utilities.php?logout=true">LogOut</a></li>' ?>
+                else echo '<li><a href="index.php?controller=user&action=log&user=-1&password=-1">LogOut</a></li>' ?>
             </ul>
         </div>
     </nav>

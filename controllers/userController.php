@@ -127,15 +127,17 @@ class userController extends mainController
 
     public function logInOut()
     {
-        $user = $_POST['user'];
+        $user = $_REQUEST['user'];
 
-        $pwd = $_POST['password'];
+        $pwd = $_REQUEST['password'];
         if ($user == '-1' && $pwd == '-1') {
+
+            require_once "controllers/indexController.php";
             session_start();
             session_unset();
             session_destroy();
             setcookie("PHPSESSID", "", time() - 1000);
-            echo 0;
+            new indexController('indexAction');
         } else {
             require_once "models/user.php";
             $db = new user();

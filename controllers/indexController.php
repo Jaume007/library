@@ -16,6 +16,8 @@ class indexController extends mainController
             //add new actions here
             case "indexAction": $this->indexAction();
                 break;
+            case "registerAction": $this->registerAction();
+                break;
             default: new errorController(0);
         }
     }
@@ -29,5 +31,10 @@ class indexController extends mainController
         $data['newest']=$newest->getBooks($where,$limit);
         $page=new mainView();
         $page->generate($data);
+    }
+    function registerAction(){
+        require_once "views/registerView.php";
+        $data=$this->getUserSettings();
+        (new registerView())->generate($data);
     }
 }

@@ -19,7 +19,7 @@
                         style="margin-right: 15px">
                     Login
                 </button>
-                <a href="register.php" class="btn waves-effect grey darken-3">Register</a>
+                <a href="index.php?controller=index&action=register" class="btn waves-effect grey darken-3">Register</a>
             </div>
         </div>
     </form>
@@ -43,10 +43,10 @@
                                 window.location.replace("index.php");
                                 break;
                             case data==1:
-                                Materialize.toast("Login succesfull", 4000);
+                                Materialize.toast("Login succesfull", 2000);
                                 setTimeout(function () {
-                                    window.location.reload();
-                                }, 4500);
+                                    window.location.replace("index.php");
+                                }, 1000);
                                 break;
                             case data==3:
                                 Materialize.toast("Incorrect user or password", 4000);
