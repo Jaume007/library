@@ -24,6 +24,9 @@ class bookController extends mainController
             case "updateAction":
                 $this->updateAction();
                 break;
+            case "histAction":
+                $this->histAction();
+                break;
             default:
                 new errorController(0);
         }
@@ -63,6 +66,23 @@ class bookController extends mainController
         $db=new book();
         $db->update('books',$status,$id);
         new librarianController("indexAction");
+
+    }
+    public function histAction(){
+        require_once "models/book.php";
+        require_once "models/booking.php";
+        require_once "views/bookHistView.php";
+        $where['isbn']= $_GET['id'];
+
+        $books = new book();
+        $book = $books->getBooks($where)[0];
+        $data=$this->getUserSettings();
+        $data=array_merge($data,$book);
+        $bookid['id']=(new book())->getId($_GET['id']);
+
+        $res=(new booking())->getBookings($bookid,"user");
+        $data['bookings']=$res;
+        (new bookHistView())->generate($data);
 
     }
 

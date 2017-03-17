@@ -14,20 +14,27 @@ class bookHistView extends view
     }
     public function generate($data){
         if (is_array($data['bookings'])){
-            require_once "widgets/histWidget";
+            require_once "widgets/histWidget.php";
             $cadena="";
+            var_dump($data['bookings']);
             foreach ($data['bookings'] as $booking){
                 $array1=[];
                 $array1['image']=$booking['photo'];
                 $array1['title']=$booking['user'];
-                $array1['line1']=$booking['pickdate'];
+                $array1['line1']=$booking['pickDate'];
                 $array1['line2']=$booking['returnDate'];
-                $array['line3']=$booking['realReturn']==0?"Not returned":$booking['realReturn'];
-                $array['button']='<a href="index.php?controller=booking&action=ret&id'.$data['isbn'].'" class="btn waves-effect grey darken-3">Return</a>';
+                var_dump($booking['realReturn']);
+                if($booking['realReturn']===null) $array1['line3']="Not returned";
+                else $array1['line3']=$booking['realReturn'];
+
+                $array['button']="";
+                    //'<a href="index.php?controller=booking&action=ret&id'.$data['isbn'].'" class="btn waves-effect grey darken-3">Return</a>';
                 $cadena.=(new histWidget($array1))->__toString();
             }
             $data['bookings']=$cadena;
 
         }else $data['bookings']="No bookings";
+        extract($data);
+        include_once $this->getTemplate();
     }
 }
