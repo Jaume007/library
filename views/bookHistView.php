@@ -27,7 +27,7 @@ class bookHistView extends view
                 if($booking['realReturn']===null) $array1['line3']="Not returned";
                 else $array1['line3']=$booking['realReturn'];
 
-                $array['button']="";
+                $array1['button']="";
                     //'<a href="index.php?controller=booking&action=ret&id'.$data['isbn'].'" class="btn waves-effect grey darken-3">Return</a>';
                 $cadena.=(new histWidget($array1))->__toString();
             }
