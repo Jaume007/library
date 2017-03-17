@@ -1,0 +1,14 @@
+The database set on db class is on a server online.
+All the user passwords are 1234. Users ara admin,librarian,jaume.
+If you try to delete a user that has pending bookings nothing will happen.
+Google books webservice is reaaaally slow, don't exasperate, it can take up to 5s to load.
+
+I have checked and it seems that everything works, if something doesn't please tell me and i will correct it.
+
+My github repo is https://github.com/Jaume007/library
+
+The db class is based on this class: https://github.com/bennettstone/simple-mysqli/blob/master/class.db.php
+I have modified the code and I understand everything that it does. I have a problem with the escape function, if I pass only one value sometimes
+it doesn't work and i don't know why.
+
+The application is published on http://pytxy.ddns.net/jaume
