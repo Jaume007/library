@@ -3,6 +3,9 @@ All the user passwords are 1234. Users ara admin,librarian,jaume.
 If you try to delete a user that has pending bookings nothing will happen.
 Google books webservice is reaaaally slow, don't exasperate, it can take up to 5s to load.
 
+As you will see the application follows the MVC pattern. The diference from other things programed in MVC by me
+is on the way of building the views. I did it this way to rehuse all the views that I already had.
+
 I have checked and it seems that everything works, if something doesn't please tell me and i will correct it.
 
 My github repo is https://github.com/Jaume007/library
