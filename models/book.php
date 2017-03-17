@@ -51,4 +51,17 @@ class book extends db
         $book=$this->escape($book);
         return $this->delete('books',$book);
     }
+    public function getProtection($isbn){
+        $isbn=$this->escape($isbn);
+        $sql="select protection from books where isbn=".$isbn;
+        $protection=$this->get_results($sql)[0]['protection'];
+        return $protection;
+    }
+    public function getId($isbn){
+        $isbn=$this->escape($isbn);
+        $id="select id from books where isbn=".$isbn;
+        $id=$this->get_results($id)[0]['id'];
+        return $id;
+    }
+
 }

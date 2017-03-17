@@ -1,58 +1,48 @@
-<?php
-session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
     <?php include_once "templates/head.php"; ?>
+    <script src="libs/picker.date.js"></script>
+    <script src="libs/picker.js"></script>
 </head>
 
 <body>
-<?php
-include_once "templates/utilities.php";
-$thisPage = "lending";
-?>
+
 <?php include_once "templates/header.php"; ?>
 <div class="row">
     <?php include_once "templates/login.php"; ?>
 </div>
 <div class="container" style="margin-bottom: 200px">
 
-    <?php $book = utilities::findById($_GET['id']); ?>
+
     <div class="center">
-        <h2><?php echo $book->getTitle(); ?> Booking</h2>
+        <h2><?php echo $title ?> Booking</h2>
     </div>
     <div class="divider black"></div>
     <div class="row" style="margin-top: 50px">
         <div class="col s4">
 
             <figure>
-                <img src="<?php echo $book->getImg(); ?>" style="max-height: 300px;max-width:200px">
+                <img src="<?php echo $image; ?>" style="max-height: 300px;max-width:200px">
             </figure>
         </div>
         <div class="col s8 flow-text">
-            <form method="post" action="#">
+            <form method="post" action="index.php?controller=booking&action=book&isbn=<?php echo $isbn ?>">
                 <div class="row">
                     <p>Pick-up Date:</p>
                     <div class="input-field">
-
-
-                        <input type="date" class="datepicker" name="start" id="start">
+                        <input type="date" class="datepicker" name="pickDate" id="start">
                         <label for="start">Pick up Date</label>
                     </div>
                 </div>
                 <div class="row">
-                    <p>Return Date:</p>
-                    <div class="input-field">
+                    <p>Return Date:  <b id="return"></b></p>
 
-                        <input type="date" class="datepicker" name="finish" id="finish">
-                        <label for="finish">Return Date</label>
-
-                    </div>
                 </div>
                 <div class="center">
-                <button class="btn waves-effect grey darken-3" type="submit" name="action">
-                    Book
-                </button>
+                    <button class="btn waves-effect grey darken-3" type="submit" name="action">
+                        Book
+                    </button>
                 </div>
             </form>
 
@@ -61,9 +51,42 @@ $thisPage = "lending";
     </div>
 </div>
 <?php include_once "templates/footer.php" ?>
-<script> $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 15 // Creates a dropdown of 15 years to control year
-    });</script>
+<script>
+    $(document).ready(function () {
+
+
+        $('.datepicker').pickadate({
+            clear: '',
+            //min: new Date(),
+            disable: [
+                <?php echo $blocked?>
+            ]
+        });
+        $('.datepicker').on('change', function () {
+
+            var data = {
+                pickDate: $(this).val(),
+                isbn: '<?php echo $isbn?>'
+            };
+
+            $.ajax({
+                url: "return.php",
+                type: "POST",
+                data: data,
+                datatype: "json",
+
+                success: function (data) {
+                    console.log(data);
+                   document.getElementById('return').innerHTML = data;
+
+                }, error: function (data) {
+                    Materialize.toast(data, 4000);
+                }
+            });
+        })
+    })
+
+
+</script>
 </body>
 </html>

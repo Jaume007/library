@@ -6,6 +6,7 @@ require_once "controllers/catalogController.php";
 require_once "controllers/bookController.php";
 require_once "controllers/errorController.php";
 require_once "controllers/adminController.php";
+require_once "controllers/bookingController.php";
 require_once "files/functions.php";
 
 
@@ -21,7 +22,7 @@ if (!empty($_POST))$_POST=sanitize($_POST);
 //testing to remove
 //session_start();
 $_SESSION["user"]="test";
-$_SESSION["type"]="50";
+$_SESSION["type"]="100";
 $_SESSION['id']=3;
 //if(isset($_COOKIE['PHPSESSID'])){
 //    session_start();

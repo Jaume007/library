@@ -37,7 +37,6 @@ class bookController extends mainController
         $where['isbn']= $_GET['id'];
         $books = new book();
         $book = $books->getBooks($where)[0];
-
         $data = array_merge($data, $book);
         $page = new bookView();
         $page->generate($data);
@@ -66,4 +65,5 @@ class bookController extends mainController
         new librarianController("indexAction");
 
     }
+
 }
