@@ -61,6 +61,9 @@ class bookingController extends mainController
             case "todayAction":
                 $this->todayAction();
                 break;
+            case "retAction":
+                $this->retAction();
+                break;
             default:
                 new errorController(0);
         }
@@ -122,10 +125,9 @@ class bookingController extends mainController
         $out=$returnDate->format('Y-m-d');
         $booking=new booking();
         $checkDate=$booking->checkDate($in,$out,$isbn);
-        echo $checkDate;
+
         $checkBookings=$booking->checkBookings($data['id']);
-        echo "///".$checkBookings;
-        echo "///".$data['maxItems'];
+
         if($checkBookings>$data['maxItems'] || $checkDate>0){
             require_once "controllers/errorController.php";
             new errorController(3,"Invalid date or too many bookings");
@@ -147,6 +149,19 @@ class bookingController extends mainController
 
 
         $this->setHtml($res);
+
+    }
+    public function retAction(){
+        $bookingID=$_GET['idB'];
+        $book=$_GET['isbn'];
+        $date=new DateTime('now');
+        $vars=[];
+        $where['id']=$bookingID;
+        $vars['realReturn']=$date->format('Y-m-d');
+        require_once "models/booking.php";
+        require_once "controllers/bookController.php";
+        (new booking())->update('bookings',$vars,$where);
+        new bookController("histAction");
 
     }
 }

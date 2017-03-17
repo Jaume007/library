@@ -32,7 +32,6 @@ class todayReturnsView
             $cadena="";
 
             foreach ($data as $booking){
-
                 $array1=[];
                 $array1['image']=$booking['image'];
                 $array1['title']=$booking['title'];
@@ -43,7 +42,7 @@ class todayReturnsView
                 if($booking['realReturn']===null) $array1['line3']="Not returned";
                 else $array1['line3']=$booking['realReturn'];
 
-                $array1['button']='<a href="index.php?controller=booking&action=ret&id='.$booking['isbn'].'" class="btn waves-effect grey darken-3">Return</a>';
+                $array1['button']='<a href="index.php?controller=booking&action=ret&id='.$booking['isbn'].'&idB='.$booking['id'].'" class="btn waves-effect grey darken-3">Return</a>';
                 $cadena.=(new histWidget($array1,1))->__toString();
             }
 

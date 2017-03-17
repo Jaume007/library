@@ -83,11 +83,12 @@ class booking extends db
         $res = $this->get_results($sql);
 
         if (!is_array($res[0])) return "0";
-        if ($type == "user" || $type = "all") {
+        if ($type == "user" || $type == "all") {
 
             foreach ($res as &$record) {
                 require_once "models/user.php";
                 $user = (new user())->getUser($record['user_id']);
+                if ($type=="all") unset($user['id']);
                 $record = array_merge($record, $user);
             }
 

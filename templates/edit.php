@@ -27,14 +27,8 @@
         </div>
         <div class="col s8 flow-text">
 
-            <form method="post" action="index.php?controller=user&action=update&id=<?php echo $id?>">
-                <div class="row">
-                    <p>Username:</p>
-                    <div class="input-field">
-                        <input type="text"  name="user" id="user" value="<?php echo $user?>">
-                        <label for="user">Username: </label>
-                    </div>
-                </div>
+            <form method="post"  action="index.php?controller=user&action=update&id=<?php echo $id?>">
+
                 <div class="row">
                     <p>Password:</p>
                     <div class="input-field">
@@ -84,6 +78,7 @@
                         <label for="telf">Telephone: </label>
                     </div>
                 </div>
+
                 <?php echo $privi?>
 
 

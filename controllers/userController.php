@@ -44,10 +44,14 @@ class userController extends mainController
     public function newAction()
     {
         require_once "models/user.php";
+
         $data = $_POST;
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         $db = new user();
         $db->newUser($data);
+
+        require_once "controllers/indexController.php";
+        new indexController('indexAction');
     }
 
     public function delAction()
@@ -135,31 +139,33 @@ class userController extends mainController
         } else {
             require_once "models/user.php";
             $db = new user();
-            $user=$db->checkPwd($user);
+            $user = $db->checkPwd($user);
 
-            if(password_verify($pwd,$user['password'])){
+            if (password_verify($pwd, $user['password'])) {
                 session_start();
-                $_SESSION['user']=$user['user'];
-                $_SESSION['type']=$user['type'];
-                $_SESSION['id']=$user['id'];
+                $_SESSION['user'] = $user['user'];
+                $_SESSION['type'] = $user['type'];
+                $_SESSION['id'] = $user['id'];
                 echo 1;
-            }else echo 3;
+            } else echo 3;
 
 
         }
 
     }
-    public function histAction(){
+
+    public function histAction()
+    {
         require_once "models/user.php";
         require_once "models/booking.php";
         require_once "views/userHistView.php";
-        $data=$this->getUserSettings();
-        $data['title']=$data['user'];
-        $data['userH']=(new user())->getUser($_GET['id']);
-        $where['user_id']=$_GET['id'];
-        $res=(new booking())->getBookings($where,"");
+        $data = $this->getUserSettings();
+        $data['title'] = $data['user'];
+        $data['userH'] = (new user())->getUser($_GET['id']);
+        $where['user_id'] = $_GET['id'];
+        $res = (new booking())->getBookings($where, "");
 
-        $data['bookings']=$res;
+        $data['bookings'] = $res;
         (new userHistView())->generate($data);
     }
 }

@@ -81,9 +81,6 @@ class bookController extends mainController
         $bookid['book_id']=(new book())->getId($_GET['id']);
 
         $res=(new booking())->getBookings($bookid,"user");
-        echo '<pre>';
-        print_r($res);
-        echo '</pre>';
         $data['bookings']=$res;
         (new bookHistView())->generate($data);
 

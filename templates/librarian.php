@@ -72,7 +72,6 @@
                 cache: false,
                 processData: false,
                 success: function (data) {
-                    Materialize.toast(data, 4000);
                     document.getElementById("results").innerHTML=data;
                     document.getElementById("resdiv").style.display = "block";
 
