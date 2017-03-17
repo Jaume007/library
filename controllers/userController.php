@@ -61,6 +61,11 @@ class userController extends mainController
         $user['id'] = $_GET['id'];
         $db = new user();
         $db->deleteUser($user);
+        if ($_SESSION['id']==$_GET['id']) {
+            session_unset();
+            session_destroy();
+            setcookie("PHPSESSID", "", time() - 1000);
+        }
         new indexController("indexAction");
 
     }
