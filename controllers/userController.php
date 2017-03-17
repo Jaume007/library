@@ -158,6 +158,7 @@ class userController extends mainController
         $data['userH']=(new user())->getUser($_GET['id']);
         $where['user_id']=$_GET['id'];
         $res=(new booking())->getBookings($where,"");
+
         $data['bookings']=$res;
         (new userHistView())->generate($data);
     }

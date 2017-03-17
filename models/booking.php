@@ -82,7 +82,7 @@ class booking extends db
         $res=$this->get_results($sql);
 
 
-        if ($type=="user") {
+        if ($type=="user" || $type="all") {
             if (is_array($res[0])) {
                 foreach ($res as &$record) {
                     require_once "models/user.php";
@@ -91,18 +91,21 @@ class booking extends db
                 }
                 return $res;
             } else return "0";
-        }else{
+        }
+        if($type!="user") {
             //change for books
             if (is_array($res[0])) {
                 foreach ($res as &$record) {
                     require_once "models/book.php";
-                    $cond['id']=$record['book_id'];
+                    $cond['id'] = $record['book_id'];
                     $book = (new book())->getBooks($cond)[0];
+                    unset($book['id']);
                     $record = array_merge($record, $book);
                 }
                 return $res;
             } else return "0";
         }
+
 
     }
 
