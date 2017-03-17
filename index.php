@@ -19,14 +19,10 @@ if (!empty($_GET)){
 }
 
 if (!empty($_POST))$_POST=sanitize($_POST);
-//testing to remove
-//session_start();
-$_SESSION["user"]="test";
-$_SESSION["type"]="100";
-$_SESSION['id']=3;
-//if(isset($_COOKIE['PHPSESSID'])){
-//    session_start();
-//}
+
+if(isset($_COOKIE['PHPSESSID'])){
+    session_start();
+}
 
 if (isset($_GET['controller'])) {
     $controller = $_GET['controller'] . "Controller";
