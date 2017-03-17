@@ -78,7 +78,7 @@ class booking extends db
             }
             $sql .= ' WHERE ' . implode(' AND ', $clause);
         }
-        echo $sql;
+
         $res=$this->get_results($sql);
 
 
@@ -95,9 +95,10 @@ class booking extends db
             //change for books
             if (is_array($res[0])) {
                 foreach ($res as &$record) {
-                    require_once "models/user.php";
-                    $user = (new user())->getUser($record['user_id']);
-                    $record = array_merge($record, $user);
+                    require_once "models/book.php";
+                    $cond['id']=$record['book_id'];
+                    $book = (new book())->getBooks($cond)[0];
+                    $record = array_merge($record, $book);
                 }
                 return $res;
             } else return "0";

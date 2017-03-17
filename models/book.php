@@ -17,7 +17,7 @@ class book extends db
         return $this->insert("books",$data);
     }
     public function getBooks($where="",$limit=""){
-        include("libs/httpful.phar");
+        include_once("libs/httpful.phar");
         $sql='select * from books';
         if (!empty($where)) {
             foreach ($where as $field => $value) {
@@ -27,7 +27,6 @@ class book extends db
             $sql .= ' WHERE ' . implode(' AND ', $clause);
         }
         if($limit!="")$sql.=$limit;
-
         $isbn=$this->get_results($sql);
 
         $books=[];

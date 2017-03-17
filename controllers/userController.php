@@ -33,6 +33,9 @@ class userController extends mainController
             case "logAction";
                 $this->logInOut();
                 break;
+            case "histAction";
+                $this->histAction();
+                break;
             default:
                 new errorController(0);
         }
@@ -145,5 +148,17 @@ class userController extends mainController
 
         }
 
+    }
+    public function histAction(){
+        require_once "models/user.php";
+        require_once "models/booking.php";
+        require_once "views/userHistView.php";
+        $data=$this->getUserSettings();
+        $data['title']=$data['user'];
+        $data['userH']=(new user())->getUser($_GET['id']);
+        $where['user_id']=$_GET['id'];
+        $res=(new booking())->getBookings($where,"");
+        $data['bookings']=$res;
+        (new userHistView())->generate($data);
     }
 }

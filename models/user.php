@@ -40,4 +40,5 @@ class user extends db
         $res=$this->get_results($sql)[0];
         return $res;
     }
+
 }

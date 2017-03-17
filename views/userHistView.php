@@ -4,23 +4,25 @@ require_once "views/view.php";
  * Created by PhpStorm.
  * User: jaume
  * Date: 17/03/17
- * Time: 11:00
+ * Time: 12:27
  */
-class bookHistView extends view
+class userHistView extends view
 {
     function __construct()
     {
         $this->setTemplate("templates/bookHist.php");
     }
     public function generate($data){
+        $data['title']=$data['userH']['user'];
+        $data['image']=$data['userH']['photo'];
         if (is_array($data['bookings'])){
             require_once "widgets/histWidget.php";
             $cadena="";
 
             foreach ($data['bookings'] as $booking){
                 $array1=[];
-                $array1['image']=$booking['photo'];
-                $array1['title']=$booking['user'];
+                $array1['image']=$booking['image'];
+                $array1['title']=$booking['title'];
                 $array1['line1']=$booking['pickDate'];
                 $array1['line2']=$booking['returnDate'];
 
@@ -28,7 +30,7 @@ class bookHistView extends view
                 else $array1['line3']=$booking['realReturn'];
 
                 $array['button']="";
-                    //'<a href="index.php?controller=booking&action=ret&id'.$data['isbn'].'" class="btn waves-effect grey darken-3">Return</a>';
+                //'<a href="index.php?controller=booking&action=ret&id'.$data['isbn'].'" class="btn waves-effect grey darken-3">Return</a>';
                 $cadena.=(new histWidget($array1))->__toString();
             }
             $data['bookings']=$cadena;
