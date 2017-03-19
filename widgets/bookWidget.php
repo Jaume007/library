@@ -25,7 +25,7 @@ class bookWidget
                             <p>' . $book['description'] . '</p>
                         </div>
                         <div class="card-action">
-                            <a href="index.php?controller=booking&id=' . $book['isbn'] . '"><span class="blue-text text-darken-2">More</span></a>
+                            <a href="index.php?controller=book&id=' . $book['isbn'] . '"><span class="blue-text text-darken-2">More</span></a>
                         </div>
                     </div>
                 </div>
