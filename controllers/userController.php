@@ -125,6 +125,7 @@ class userController extends mainController
         }
         $id['id'] = $_GET['id'];
         $db = new user();
+        $data['photo']="url";//todo
         $db->updateUser($data, $id);
         header("Location: index.php?controller=user&action=show&id=" . $id['id']);
 
