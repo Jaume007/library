@@ -28,9 +28,7 @@ class book extends db
         }
         if($limit!="")$sql.=$limit;
         $isbn=$this->get_results($sql);
-
         $books=[];
-
         foreach ($isbn as $book){
             $uri="https://www.googleapis.com/books/v1/volumes?q=isbn:".$book['isbn'];
             $fullbook = \Httpful\Request::get($uri)->send();

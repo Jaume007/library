@@ -5,10 +5,10 @@ class db
     private $conn = null;
     public $filter;
 
-    private $servername = "pytxy.ddns.net";
-    private $username = "jaume";
-    private $pwd = "fb5FHeZj7r9j";
-    private $dbname = "jaume";
+    private $servername = "localhost";
+    private $username = "root";
+    private $pwd = "784512";//"fb5FHeZj7r9j";
+    private $dbname = "Library";
 
 
     public function __construct()

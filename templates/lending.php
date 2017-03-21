@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <p>Return Date:  <b id="return"></b></p>
+                    <p>Return Date: <b id="return"></b></p>
 
                 </div>
                 <div class="center">
@@ -76,7 +76,7 @@
 
                 success: function (data) {
                     console.log(data);
-                   document.getElementById('return').innerHTML = data;
+                    document.getElementById('return').innerHTML = data;
 
                 }, error: function (data) {
                     Materialize.toast(data, 4000);
