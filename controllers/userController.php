@@ -124,7 +124,8 @@ class userController extends mainController
         }
         $id['id'] = $_GET['id'];
         $db = new user();
-        //$data['photo']="url";//todo
+        if ($_FILES['img']['error'] === UPLOAD_ERR_OK)
+            $data['photo'] = $this->editImage($_FILES['img'], $id['id']);
         $db->updateUser($data, $id);
         unset($_GET);
         $_GET['id']=$id['id'];
@@ -178,5 +179,21 @@ class userController extends mainController
 
         $data['bookings'] = $res;
         (new userHistView())->generate($data);
+    }
+
+    private function editImage($file, $user_id)
+    {
+        $target_dir = "img/users/";
+        if (getimagesize($file["tmp_name"]) !== false) {
+            $target_file = $target_dir . $user_id;
+            if (file_exists($target_file)) {
+                unlink($target_file);
+            }
+            move_uploaded_file($file['tmp_name'], $target_file);
+            chmod($target_file, 0777);
+            return $target_file;
+        } else {
+            new Exception('Invalid image');
+        }
     }
 }

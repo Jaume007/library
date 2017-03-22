@@ -27,7 +27,7 @@
         </div>
         <div class="col s8 flow-text">
 
-            <form method="post"  action="index.php?controller=user&action=update&id=<?php echo $id?>">
+            <form method="post" enctype="multipart/form-data" action="index.php?controller=user&action=update&id=<?php echo $id?>">
 
                 <div class="row">
                     <p>Password:</p>
@@ -76,6 +76,18 @@
                     <div class="input-field">
                         <input type="text"  name="telephone" id="telf" value="<?php echo $telephone?>">
                         <label for="telf">Telephone: </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <p>Profile picture:</p>
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>File</span>
+                            <input name="img" type="file">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
                     </div>
                 </div>
 

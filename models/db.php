@@ -13,9 +13,7 @@ class db
 
     public function __construct()
     {
-        mb_internal_encoding('UTF-8');
-        mb_regex_encoding('UTF-8');
-        mysqli_report(MYSQLI_REPORT_STRICT);
+
         try {
             $this->conn = new mysqli($this->servername, $this->username, $this->pwd, $this->dbname);
             $this->conn->set_charset("utf8");
