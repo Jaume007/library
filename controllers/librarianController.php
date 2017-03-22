@@ -28,7 +28,7 @@ class librarianController extends mainController
     {
         require_once "controllers/errorController.php";
         $data=$this->getUserSettings();
-        if($data['type']>($data['librarian']-1)) {
+
             require_once "models/book.php";
             include_once "views/librarianView.php";
             require_once "models/user.php";
@@ -43,7 +43,7 @@ class librarianController extends mainController
             $data['users']=$users;
             $page = new librarianView();
             $page->generate($data);
-        }else new errorController(1);
+
 
     }
 

@@ -145,8 +145,9 @@ class bookingController extends mainController
         } else {
             require_once "controllers/userController.php";
             $booking->saveBooking($in, $out, $isbn, $data['id']);
-            header("Location: index.php?controller=user&action=hist&id=".$data['id']);
-            //new userController("showAction");
+            unset($_GET);
+            $_GET['id']=$data['id'];
+            new userController("showAction");
         }
 
 
@@ -178,7 +179,10 @@ class bookingController extends mainController
         require_once "models/booking.php";
         require_once "controllers/bookController.php";
         (new booking())->update('bookings', $vars, $where);
-        header("Location: index.php?controller=book&action=hist&id=" . $book);
+        unset($_GET);
+        $_GET['id']=$book;
+        new bookController("histAction");
+
 
     }
 }

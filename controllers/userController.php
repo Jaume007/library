@@ -73,9 +73,9 @@ class userController extends mainController
     public function showAction()
     {
         require_once "controllers/errorController.php";
-        $data = $this->getUserSettings();
 
-        if ($data['type'] > ($data['member'] - 1)) {
+
+
             require_once "models/user.php";
             require_once "views/profileView.php";
             $id = $_GET['id'];
@@ -85,11 +85,10 @@ class userController extends mainController
             $user = $user->getUser($id);
             unset($user['type']);
             $data = array_merge($data, $user);
-
             $page = new profileView();
             $page->generate($data);
 
-        } else new errorController(1);
+
     }
 
     public function editAction()
@@ -97,7 +96,7 @@ class userController extends mainController
         require_once "controllers/errorController.php";
         $data = $this->getUserSettings();
 
-        if ($data['type'] > ($data['member'] - 1)) {
+
             require_once "models/user.php";
             require_once "views/editView.php";
             $id = $_GET['id'];
@@ -112,7 +111,7 @@ class userController extends mainController
             $page = new editView();
             $page->generate($data);
 
-        } else new errorController(1);
+
     }
 
     public function updateAction()
@@ -125,9 +124,11 @@ class userController extends mainController
         }
         $id['id'] = $_GET['id'];
         $db = new user();
-        $data['photo']="url";//todo
+        //$data['photo']="url";//todo
         $db->updateUser($data, $id);
-        header("Location: index.php?controller=user&action=show&id=" . $id['id']);
+        unset($_GET);
+        $_GET['id']=$id['id'];
+        $this->showAction();
 
     }
 

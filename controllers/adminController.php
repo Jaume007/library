@@ -27,12 +27,12 @@ class adminController extends mainController
     public function indexAction(){
         require_once "controllers/errorController.php";
         $data=$this->getUserSettings();
-        if($data['type']>($data['admin']-1)){
+
             require_once "views/adminView.php";
             $page=new adminView();
             $page->generate($data);
 
-        }else new errorController(1);
+
     }
     public function updateAction(){
         $data=$_POST;

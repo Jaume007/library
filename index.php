@@ -33,8 +33,9 @@ if (isset($_GET['controller'])) {
                 new $controller($action);
             } else {
                 $action = "indexAction";
-
-                new $controller($action);
+                if(checkPrivileges($controller,$action)) {
+                    new $controller($action);
+                }else new errorController(1);
             }
         }else new errorController(0);
     }else {
@@ -44,7 +45,10 @@ if (isset($_GET['controller'])) {
 }else {
     $controller="indexController";
     $action="indexAction";
-    new $controller($action);
+    if(checkPrivileges($controller,$action)){
+        new $controller($action);
+    }else new errorController(1);
+
 }
 
 
