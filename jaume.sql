@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 17-03-2017 a las 22:53:36
+-- Tiempo de generación: 22-03-2017 a las 12:58:39
 -- Versión del servidor: 5.7.17-0ubuntu0.16.04.1
 -- Versión de PHP: 7.0.15-0ubuntu0.16.04.4
 
@@ -49,7 +49,9 @@ INSERT INTO `bookings` (`id`, `user_id`, `book_id`, `pickDate`, `returnDate`, `r
 (14, 2, 15, '2017-04-11', '2017-04-25', '2017-03-17'),
 (15, 6, 2, '2017-03-29', '2017-04-01', NULL),
 (16, 6, 2, '2017-03-17', '2017-03-24', NULL),
-(17, 5, 2, '2017-04-18', '2017-05-02', NULL);
+(17, 5, 2, '2017-04-18', '2017-05-02', NULL),
+(18, 6, 2, '2017-05-10', '2017-05-24', NULL),
+(20, 2, 2, '2017-03-25', '2017-03-28', NULL);
 
 -- --------------------------------------------------------
 
@@ -110,9 +112,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user`, `password`, `name`, `surname`, `IDcard`, `telephone`, `email`, `photo`, `adress`, `type`) VALUES
-(2, 'librarian', '$2y$10$wv/j4o81u44C3AOU4hYK8OhYSJBgjCvB6I.XiVj77rYj58lxcUcla', 'qdsfasdf', 'asdfasdf', '3412351251534', '', 'afdasdfas@asdfasd.com', 'img/noprofile.jpg', '', 51),
-(5, 'admin', '$2y$10$kk2jIRDGQaBTl/eYIgYF4Oi77KECzNFAgF80JpjsnUxmfcm7TXWyO', 'asdfafs', 'asdfafds', '123412341234', '12341123616', 'asdffasd@sdfasdf.com', 'img/noprofile.jpg', 'asdfa sdfas dfsad', 100),
-(6, 'jaume', '$2y$10$Wum3bgj41.kOiIDo4So4R.l.erDcUIDujHS9KRk7mvVj/TtvUMS.y', 'Jaume', 'Pons', '12341234', '2141234123', 'jaume@prova.com', 'img/noprofile.jpg', 'asdfasd f', 1);
+(2, 'librarian', '$2y$10$wv/j4o81u44C3AOU4hYK8OhYSJBgjCvB6I.XiVj77rYj58lxcUcla', 'Maria Eul&agrave;lia', 'asdfasdf', '3412351251534', '', 'afdasdfas@asdfasd.com', 'img/noprofile.jpg', '', 51),
+(5, 'admin', '$2y$10$kk2jIRDGQaBTl/eYIgYF4Oi77KECzNFAgF80JpjsnUxmfcm7TXWyO', 'asdfafs', 'asdfafds', '123412341234', '12341123618', 'asdffasd@sdfasdf.com', 'img/noprofile.jpg', 'asdfa sdfas dfsad', 100),
+(6, 'jaume', '$2y$10$Wum3bgj41.kOiIDo4So4R.l.erDcUIDujHS9KRk7mvVj/TtvUMS.y', 'Jaume', 'Pons', '12341234', '2141234123', 'jaume@prova.com', 'img/users/6', 'asdfasd f', 1);
 
 --
 -- Índices para tablas volcadas
@@ -130,7 +132,8 @@ ALTER TABLE `bookings`
 -- Indices de la tabla `books`
 --
 ALTER TABLE `books`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `isbn` (`isbn`);
 
 --
 -- Indices de la tabla `users`
@@ -147,17 +150,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Restricciones para tablas volcadas
 --
