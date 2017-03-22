@@ -12,7 +12,7 @@ class bookWidget
     function __construct($book)
     {
        // $book['description']=substr($book['description'],0,40).'...';
-
+        if(strlen($book['description'])>350)$book['description']=substr($book['description'],0,350)."{...}";
         $this->book=
          ' <div class="col s12" style="min-height: 300px">
                 <h5 class="header">' . $book['title'] . '</h5>
