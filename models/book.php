@@ -30,12 +30,14 @@ class book extends db
         $isbn=$this->get_results($sql);
         $books=[];
         foreach ($isbn as $book){
-            $uri="https://www.googleapis.com/books/v1/volumes?q=isbn:".$book['isbn'];
+            $uri="https://www.googleapis.com/books/v1/volumes?q=isbn:".$book['isbn']."&key=AIzaSyBx6rD8ZgGK4nMiuC2HpH-w6lwbhJ2Jo3g&fields=items(volumeInfo)";
+
             $fullbook = \Httpful\Request::get($uri)->send();
             $fullbook=json_decode($fullbook,true);
             $book['active']=$book['active']==0?"NO":"YES";
-           // if($fullbook['totalItems']==0)continue;
+
             $fullbook=$fullbook['items'][0]['volumeInfo'];
+
             $books[]=array('title'=>$fullbook['title'],'author'=>$fullbook['authors'][0],
                 'description'=>$fullbook['description'],'isbn'=>$book['isbn'],'published'=>$fullbook['publishedDate'],
                 'image'=>$fullbook['imageLinks']['thumbnail'],'category'=>$fullbook['categories'][0],'status'=>$book['active']);
