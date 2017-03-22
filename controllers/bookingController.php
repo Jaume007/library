@@ -112,12 +112,12 @@ class bookingController extends mainController
 
         $realOut = $realOut->getSafeReturn($in, $out, $_REQUEST['isbn']);
 
-        if ($realOut != null) {
+        if ($realOut != null ) {
         }
         $realOut = new DateTime($realOut);
         $realOut = $realOut->sub(new DateInterval('P1D'));
-        if ($realOut < $outDate && $realOut > $pickDate) $outDate = $realOut;
-        $this->returnDate = $outDate;
+        if ($realOut < $outDate && $realOut > $pickDate) {$outDate = $realOut;
+        $this->returnDate = $outDate;}else $this->returnDate= "error";
 
 
     }
@@ -127,6 +127,10 @@ class bookingController extends mainController
         require_once "models/booking.php";
         $this->getReturn();
         $returnDate = $this->getReturnDate();
+        if ($returnDate=="error") {
+            new errorController(3, "Invalid date");
+            exit();
+        }
         $isbn = $_REQUEST['isbn'];
         $data = $this->getUserSettings();
 
@@ -137,9 +141,6 @@ class bookingController extends mainController
         $checkDate = $booking->checkDate($in, $out, $isbn);
         $checkBookings = $booking->checkBookings($data['id']);
         if ($checkBookings > $data['maxItems'] | $checkDate > 0) {
-            echo $checkBookings;
-            echo $checkDate;
-            exit();
             require_once "controllers/errorController.php";
             new errorController(3, "Invalid date or too many bookings");
         } else {
